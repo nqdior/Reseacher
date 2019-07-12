@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Reseacher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ThemeColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BaseDark</Value>
+    </Setting>
+    <Setting Name="AccentColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Blue</Value>
+    </Setting>
+    <Setting Name="StripWidth" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">250</Value>
+    </Setting>
+    <Setting Name="Opacitys" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

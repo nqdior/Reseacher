@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Reseacher.SidePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Reseacher"
+             mc:Ignorable="d">
+    <TabControl TabStripPlacement="Left">
+        <TabControl.Resources>
+            <Style TargetType="{x:Type TabItem}">
+                <Setter Property="LayoutTransform">
+                    <Setter.Value>
+                        <TransformGroup>
+                            <RotateTransform Angle="90"/>
+                        </TransformGroup>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="Black"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TabItem">
+                            <Grid Name="Panel">
+                                <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="20,5"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="Panel" Property="Background" Value="{DynamicResource AccentBrushKey}" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="False">
+                                    <Setter TargetName="Panel" Property="Background" Value="{DynamicResource InactiveBackgroundBrushKey}" />
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="Panel" Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </TabControl.Resources>
+        <TabItem Header="Header1"></TabItem>
+        <TabItem Header="Header2"></TabItem>
+        <TabItem Header="Header3"></TabItem>
+    </TabControl>
+</UserControl>

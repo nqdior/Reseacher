@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Reseacher.DragablzTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Reseacher"
+             xmlns:properties="clr-namespace:Reseacher.Properties"
+             xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+             xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
+             mc:Ignorable="d" >
+    <dockablz:Layout>
+        <dragablz:TabablzControl x:Name="InitialTabablzControl"
+                                 ItemsSource="{Binding TabContents}"                            
+                                 HeaderMemberPath="Header"
+                                 Margin="4, 0, 4, 4">
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
+            </dragablz:TabablzControl.InterTabController>
+            <dragablz:TabablzControl.ContentTemplate>
+                <DataTemplate DataType="{x:Type local:TabContent}">
+                    <ContentControl Content="{Binding Content}" Margin="4 4 4 4" FontSize="14" />
+                </DataTemplate>
+            </dragablz:TabablzControl.ContentTemplate>
+        </dragablz:TabablzControl>
+    </dockablz:Layout>
+</UserControl>

@@ -1,0 +1,38 @@
+﻿<Application x:Class="Reseacher.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+             xmlns:local="clr-namespace:Reseacher"
+             StartupUri="./Views/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                
+                <!-- MetroRadi Resources -->
+                <ResourceDictionary Source="pack://application:,,,/MetroRadiance;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MetroRadiance;component/Themes/Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MetroRadiance;component/Themes/Accents/Blue.xaml" />
+                <!-- / MetroRadi Resources -->
+                
+                <!-- MahApps Resources -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/mahapps.xaml" />
+                <!-- / MahApps Resources -->
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Dragablz Styles -->
+            <!-- .\Source\Repos\Dragablz\Dragablz\Themes\MahApps.xaml を書き換えてMetroRadi仕様にできそう -->
+            <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MahAppsTabablzControlStyle}">
+                <Setter Property="NewItemFactory" Value="{x:Static local:MainWindowViewModel.NewItemFactory}" />
+                <Setter Property="ShowDefaultAddButton" Value="True" />
+                <Setter Property="ShowDefaultCloseButton" Value="True" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
