@@ -11,6 +11,13 @@ namespace Reseacher
     {
         private static bool _hackyIsFirstWindow = true;
 
+        public bool Hacky => _hackyIsFirstWindow;
+
+        public void FormLoadEnded()
+        {
+            _hackyIsFirstWindow = false;
+        }
+
         public DragablzControl()
         {
             InitializeComponent();
@@ -19,7 +26,16 @@ namespace Reseacher
             {
                 DataContext = MainWindowViewModel.CreateWithSamples();
             }
-            _hackyIsFirstWindow = false;
+        }
+
+        public void AddServerAddPage()
+        {
+            DataContext = MainWindowViewModel.CreateWithAdds();
+            InitialTabablzControl.SelectedIndex = InitialTabablzControl.Items.Count - 1;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

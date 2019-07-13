@@ -7,9 +7,11 @@
                       xmlns:chrome="http://schemes.grabacr.net/winfx/2014/chrome"
                       xmlns:properties="clr-namespace:Reseacher.Properties"
                       Title="Reseacher"
-					  Width="970"
-					  Height="600"
-                      Opacity="{Binding Path=Opacity, Source={x:Static properties:Settings.Default}}"
+					  Width="720"
+                      MinWidth="720"
+					  Height="450"
+                      MinHeight="450"
+                      Opacity="{Binding Path=Opacitys, Source={x:Static properties:Settings.Default}}"
                       WindowStyle="None"
                       AllowsTransparency="True"
 					  FontFamily="Segoe UI"
@@ -19,10 +21,18 @@
 					  TextOptions.TextFormattingMode="Display"
                       Loaded="Window_Loaded"
                       SizeChanged="Window_SizeChanged">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MetroMenuItem}">
+            <Setter Property="Background" Value="{DynamicResource ThemeBrushKey}" />
+        </Style>
+    </Window.Resources>
+
     <chrome:WindowChrome.Instance>
         <chrome:WindowChrome>
             <chrome:WindowChrome.Top>
-                <Border Background="{DynamicResource AccentBrushKey}"
+                <Border x:Name="dddddd"
+                        Background="{DynamicResource AccentBrushKey}"
                         Padding="24,3"
                         Margin="8,0"
                         HorizontalAlignment="Right">
@@ -31,17 +41,18 @@
             </chrome:WindowChrome.Top>
         </chrome:WindowChrome>
     </chrome:WindowChrome.Instance>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" x:Name="aaaaa" />
+            <RowDefinition Height="Auto" x:Name="bbbbb" />
             <RowDefinition />
             <RowDefinition Height="25" />
             <RowDefinition Height="0" x:Name="margin" />
         </Grid.RowDefinitions>
 
         <!-- caption bar area -->
-        <Border Grid.Row="0" controls:MetroWindow.IsCaptionBar="True">
+        <Border Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -55,7 +66,31 @@
                         <Ellipse Width="15"	Height="15" Fill="{DynamicResource ActiveForegroundBrushKey}" />
                     </Grid>
                 </controls:CaptionIcon>
-                <local:Menus Grid.Column="2" WindowChrome.IsHitTestVisibleInChrome="True"/>
+
+                <Grid Grid.Column="2" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Menu Foreground="{DynamicResource ForegroundBrushKey}"
+                          Background="{DynamicResource ThemeBrushKey}"
+		                  FontSize="12"
+                          VerticalAlignment="Center"
+                          Grid.Column="0" >
+                        <MenuItem Header="ファイル(_F)" />
+                        <MenuItem Header="新規(_N)" Click="MenuItem_Click" />
+                        <MenuItem Header="編集(_E)" />
+                        <MenuItem Header="オプション(_O)" >
+                            <MenuItem IsCheckable="True" Header="オプション1" />
+                            <MenuItem IsCheckable="True" Header="オプション2" />
+                            <MenuItem IsCheckable="True" Header="オプション3" />
+                        </MenuItem>
+                    </Menu>
+                    <local:ThemeControl Grid.Column="1"/>
+                </Grid>
+
+                <!--<local:Menus Grid.Column="2" WindowChrome.IsHitTestVisibleInChrome="True"/>-->
+                
                 <controls:SystemButtons Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,5,0"/>
             </Grid>
         </Border>
@@ -64,7 +99,16 @@
         <local:ThemeControl Grid.Row="1"/>
 
         <!-- content area -->
-        <local:MainControl x:Name="dragablzControl" Grid.Row="2" />
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="stripArea" Width="{Binding Path=StripWidth, Source={x:Static properties:Settings.Default}}"/>
+                <ColumnDefinition x:Name="ccccccccc" Width="4"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <local:SidePanel Grid.Column="0" MinWidth="30" />
+            <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" MouseLeave="GridSplitter_MouseLeave" Background="{DynamicResource ThemeBrushKey}"/>
+            <local:DragablzControl x:Name="dragblzControl" Grid.Column="2" />
+        </Grid>
 
         <!-- under bar area -->
         <Grid Grid.Row="3" Background="{DynamicResource AccentBrushKey}"/>

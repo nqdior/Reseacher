@@ -7,11 +7,14 @@
              xmlns:properties="clr-namespace:Reseacher.Properties"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
-             mc:Ignorable="d" >
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
+             WindowChrome.IsHitTestVisibleInChrome="True" >
     <dockablz:Layout Grid.Column="2">
         <dragablz:TabablzControl x:Name="InitialTabablzControl"
                                  ItemsSource="{Binding TabContents}"                            
                                  HeaderMemberPath="Header"
+                                 ConsolidateOrphanedItems="True"
                                  Margin="4, 0, 4, 4">
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />

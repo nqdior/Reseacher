@@ -49,7 +49,7 @@ namespace Reseacher.Core
                 case Engine.SQLite:
                     return ""; //  Resources.SQLITE_TABLES;
 
-                case Engine.Oracle:
+                case Engine.OracleDatabase:
 #pragma warning disable CS0618
                     return ""; //  Resources.ORACLE_TABLES;
 

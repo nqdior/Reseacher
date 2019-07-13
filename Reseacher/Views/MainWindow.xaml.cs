@@ -1,4 +1,5 @@
 ﻿using Reseacher.Core;
+using Reseacher.Properties;
 using System;
 using System.Windows;
 
@@ -9,13 +10,36 @@ namespace Reseacher
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine(Properties.Settings.Default.Opacitys);
+        }
+
+        /// <summary>
+        /// メニューアイテムの挙動どこかにまとめたい
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            dragblzControl.AddServerAddPage();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Opacity = Properties.Settings.Default.Opacitys;
-            new ManageWindow().Show();
+            if (dragblzControl.Hacky == false)
+            {
+                aaaaa.Height = new GridLength(0);
+                bbbbb.Height = new GridLength(0);
+                stripArea.MinWidth = 0;
+                stripArea.Width = new GridLength(0);
+                ccccccccc.Width = new GridLength(0);
+                dddddd.Visibility = Visibility.Hidden;
+            }
+            dragblzControl.FormLoadEnded();
+        }
+
+        private void GridSplitter_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Settings.Default.StripWidth = stripArea.Width.Value;
+            Settings.Default.Save();
         }
 
         /// <summary> 最大化時にステータスバーが隠れないようにする対応。対応策模索中。 </summary>

@@ -36,7 +36,7 @@ namespace Reseacher.Core
             get => _useBridgeServer;
             set
             {
-                if (Engine == Engine.SQLServer || Engine == Engine.SQLite || Engine == Engine.Oracle)
+                if (Engine == Engine.SQLServer || Engine == Engine.SQLite || Engine == Engine.OracleDatabase)
                 {
                     _useBridgeServer = false;
                     return;
@@ -52,7 +52,7 @@ namespace Reseacher.Core
             get => _bridgeServer;
             set
             {
-                if (Engine == Engine.SQLServer || Engine == Engine.SQLite || Engine == Engine.Oracle)
+                if (Engine == Engine.SQLServer || Engine == Engine.SQLite || Engine == Engine.OracleDatabase)
                 {
                     _bridgeServer = null;
                     return;

@@ -9,7 +9,7 @@ namespace Reseacher.Core
         PostgreSQL = 2,
         MariaDB = 3,
         SQLite = 4,
-        Oracle = 5
+        OracleDatabase = 5
     }
 
     public static partial class EngineExtend

@@ -33,7 +33,7 @@ namespace Reseacher.Core
                 case Engine.SQLite:
                     return new SQLiteConnection();
 
-                case Engine.Oracle:
+                case Engine.OracleDatabase:
                 #pragma warning disable
                     return new OracleConnection();
 

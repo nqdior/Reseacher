@@ -11,11 +11,20 @@ namespace Reseacher
             InterTabClient1 = new DefaultInterTabClient();
         }
 
+        static MainWindowViewModel result;
+
         public static MainWindowViewModel CreateWithSamples()
         {
-            var result = new MainWindowViewModel();
+            result = new MainWindowViewModel();
 
             result.TabContents.Add(new TabContent("ようこそ", new IntroductionPage()));
+
+            return result;
+        }
+
+        public static MainWindowViewModel CreateWithAdds()
+        {
+            result.TabContents.Add(new TabContent("サーバ追加ビュー", new AddPage()));
 
             return result;
         }
@@ -25,6 +34,8 @@ namespace Reseacher
         public IInterTabClient InterTabClient => InterTabClient1;
 
         public static Func<object> NewItemFactory => () => new TabContent("新規ビュー", new DataViewPage());
+
+        public static Func<object> NewItemFactory2 => () => new TabContent("サーバ追加ビュー", new AddPage());
 
         public IInterTabClient InterTabClient1 { get; }
     }

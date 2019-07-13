@@ -33,7 +33,7 @@ namespace Reseacher.Core
                 case Engine.SQLite:
                     return new SQLiteCommandBuilder();
 
-                case Engine.Oracle:
+                case Engine.OracleDatabase:
                     #pragma warning disable CS0618
                     return new OracleCommandBuilder();
 
