@@ -101,11 +101,11 @@
         <!-- content area -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="stripArea" Width="{Binding Path=StripWidth, Source={x:Static properties:Settings.Default}}"/>
+                <ColumnDefinition x:Name="stripArea" MinWidth="30" Width="{Binding Path=StripWidth, Source={x:Static properties:Settings.Default}}"/>
                 <ColumnDefinition x:Name="ccccccccc" Width="4"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <local:SidePanel Grid.Column="0" MinWidth="30" />
+            <local:SidePanel Grid.Column="0" />
             <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" MouseLeave="GridSplitter_MouseLeave" Background="{DynamicResource ThemeBrushKey}"/>
             <local:DragablzControl x:Name="dragblzControl" Grid.Column="2" />
         </Grid>

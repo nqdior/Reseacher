@@ -5,8 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Reseacher"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    
+    <UserControl.Resources>
+        <local:ServerList x:Key="ServerList"/>
+        <HierarchicalDataTemplate x:Key="treeViewTemplate" ItemsSource="{Binding Path=Children}">
+            <TextBlock Text="{Binding Path=Name}" />
+        </HierarchicalDataTemplate>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Mode="OneWay" Source="{StaticResource ServerList}"/>
+    </UserControl.DataContext>
     <Grid>
-            
+        <TreeView ItemsSource="{Binding Artists}" Style="{StaticResource VirtualisedMetroTreeView}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Albums}">
+                    <TextBlock Text="{Binding Name}" />
+                    <HierarchicalDataTemplate.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}" />
+                        </DataTemplate>
+                    </HierarchicalDataTemplate.ItemTemplate>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+        <TreeView HorizontalAlignment="Stretch" Margin="7"  Name="treeView1"
+                  VerticalAlignment="Stretch"
+                  ItemTemplate="{StaticResource treeViewTemplate}"
+                  ItemsSource="{Binding _serverList}" />
+
     </Grid>
 </UserControl>

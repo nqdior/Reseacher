@@ -119,7 +119,7 @@
   </resheader>
   <data name="SCHEMAS" xml:space="preserve">
     <value>SELECT
-    T.TABLE_SCHEMA AS 'SCHEMA',
+    T.TABLE_SCHEMA AS 'Name',
 	COUNT(*) AS 'TABLECOUNT'
 FROM
     INFORMATION_SCHEMA.TABLES T
@@ -130,7 +130,7 @@ GROUP BY
   <data name="TABLES" xml:space="preserve">
     <value>SELECT
     T.TABLE_SCHEMA AS 'SCHEMA',
-	T.TABLE_NAME AS 'TABLE',
+	T.TABLE_NAME AS 'Name',
 	T.TABLE_ROWS AS 'ROWCOUNT',
 	C.TABLE_COLUMNS AS 'COLUMNCOUNT'
 FROM

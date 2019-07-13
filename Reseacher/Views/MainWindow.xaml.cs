@@ -1,6 +1,7 @@
 ﻿using Reseacher.Core;
 using Reseacher.Properties;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace Reseacher

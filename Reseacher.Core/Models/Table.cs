@@ -1,10 +1,10 @@
 ﻿namespace Reseacher.Core
 {
-    public class TableModel
+    public class Table
     {
         public string Schema { get; set; }
 
-        public string Table { get; set; }
+        public string Name { get; set; }
 
         public int RowCount { get; set; }
 

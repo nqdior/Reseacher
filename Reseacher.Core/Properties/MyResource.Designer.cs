@@ -19,7 +19,7 @@ namespace Reseacher.Core.Properties {
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
     // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class MyResource {
@@ -62,7 +62,7 @@ namespace Reseacher.Core.Properties {
         
         /// <summary>
         ///   SELECT
-        ///    T.TABLE_SCHEMA AS &apos;SCHEMA&apos;,
+        ///    T.TABLE_SCHEMA AS &apos;Name&apos;,
         ///	COUNT(*) AS &apos;TABLECOUNT&apos;
         ///FROM
         ///    INFORMATION_SCHEMA.TABLES T
@@ -79,7 +79,7 @@ namespace Reseacher.Core.Properties {
         /// <summary>
         ///   SELECT
         ///    T.TABLE_SCHEMA AS &apos;SCHEMA&apos;,
-        ///	T.TABLE_NAME AS &apos;TABLE&apos;,
+        ///	T.TABLE_NAME AS &apos;Name&apos;,
         ///	T.TABLE_ROWS AS &apos;ROWCOUNT&apos;,
         ///	C.TABLE_COLUMNS AS &apos;COLUMNCOUNT&apos;
         ///FROM

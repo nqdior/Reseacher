@@ -1,8 +1,8 @@
 ﻿namespace Reseacher.Core
 {
-    public class SchemaModel
+    public class Schema
     {
-        public string Schema { get; set; }
+        public string Name { get; set; }
 
         public int TableCount { get; set; }
     }

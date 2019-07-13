@@ -45,7 +45,7 @@ namespace Reseacher.Core
             }
         }
 
-        private BridgeServer _bridgeServer = null;
+        private BridgeServer _bridgeServer = new BridgeServer();
 
         public BridgeServer BridgeServer
         {

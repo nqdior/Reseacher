@@ -39,7 +39,9 @@
                 </Setter>
             </Style>
         </TabControl.Resources>
-        <TabItem Header="Header1"></TabItem>
+        <TabItem Header="Header1">
+            <local:ManagePage />
+        </TabItem>
         <TabItem Header="Header2"></TabItem>
         <TabItem Header="Header3"></TabItem>
     </TabControl>

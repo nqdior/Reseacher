@@ -8,16 +8,16 @@ namespace Reseacher.Core
 
         public DatabaseService(Server server) => _server = server;
 
-        public IEnumerable<SchemaModel> GetSchemaList()
+        public IEnumerable<Schema> GetSchemaList()
         {
             var query = new QueryFactory(_server.Engine).SchemaListCommand();
-            return _server.GetData<SchemaModel>(query);
+            return _server.GetData<Schema>(query);
         }
 
-        public IEnumerable<TableModel> GetTableList(string schemaName)
+        public IEnumerable<Table> GetTableList(string schemaName)
         {
             var query = new QueryFactory(_server.Engine).TableListCommand(schemaName);
-            return _server.GetData<TableModel>(query);
+            return _server.GetData<Table>(query);
         }
     }
 }
