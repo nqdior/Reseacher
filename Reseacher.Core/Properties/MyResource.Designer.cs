@@ -97,14 +97,21 @@ namespace Reseacher.Core.Properties {
         ///		TABLE_NAME
         ///	) C
         ///	ON T.TABLE_SCHEMA = C.TABLE_SCHEMA AND T.TABLE_NAME = C.TABLE_NAME
-        ///
-        ///WHERE
-        ///T.TABLE_SCHEMA = &apos;{0}&apos;
-        ///; に類似しているローカライズされた文字列を検索します。
+        /// に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string TABLES {
             get {
                 return ResourceManager.GetString("TABLES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   WHERE
+        ///T.TABLE_SCHEMA = &apos;{0}&apos; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string TABLES_WHERE {
+            get {
+                return ResourceManager.GetString("TABLES_WHERE", resourceCulture);
             }
         }
     }
