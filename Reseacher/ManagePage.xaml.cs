@@ -28,25 +28,40 @@ namespace Reseacher
             InitializeComponent();
         }
 
-        TreeViewModelView model = new TreeViewModelView();
+        TreeViewModelView modelView = new TreeViewModelView();
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = model;
+            DataContext = modelView;
+            modelView.Modeltest();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            model.Modeltest();
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
         }
     }
 
     public class TreeViewModelView : INotifyPropertyChanged
     {
-        public Category TreeViewRoot { get; set; }
+        public ObservableCollection<Category> TreeViewRoot { get; set; }
+
+        public Server server;
+
         public TreeViewModelView()
         {
-            var server = new Server("test", Engine.MySQL);
+            TreeViewRoot = new ObservableCollection<Category>();
+        }
+
+        public void Modeltest()
+        {
+            server = new Server("test", Engine.MySQL);
 
             var constr = ConnectionStringBuilderProvider.MySqlConnectionStringBuilder;
             constr.Server = "127.0.0.1";
@@ -68,108 +83,58 @@ namespace Reseacher
                 server
             };
             var test = new DatabaseService(server);
-
-            TreeViewRoot = new Category();
+            server.Open();
+            
             var schemaList = test.GetSchemaList();
             foreach (var _server in serverRack)
             {
                 var serverChildren = new Category(_server.Name)
                 {
-                    Children = new Category()
+                    Children = new List<Category>()
                 };
+                serverChildren.Column1 = _server.Engine.ToString();
+
                 TreeViewRoot.Add(serverChildren);
 
                 foreach (var _schema in schemaList)
                 {
                     var schemaChildren = new Category(_schema.Name)
                     {
-                        Children = new Category()
+                        Children = new List<Category>()
                     };
                     var tableList = test.GetTableList(_schema.Name);
                     foreach (var _table in tableList)
                     {
-                        var tableChildren = new Category(_table.Name);
+                        var tableChildren = new Category(_table.Name)
+                        {
+                            Column1 = _table.RowCount.ToString(),
+                            Column2 = _table.ColumnCount.ToString()
+                        };
                         schemaChildren.Children.Add(tableChildren);
                     }
+                    schemaChildren.Column1 = _schema.TableCount.ToString();
                     serverChildren.Children.Add(schemaChildren);
                 }
             }
-        }
-
-        public void Modeltest()
-        {
-            var serverChildren = new Category("ばばば")
-            {
-                Children = new Category()
-            };
-            TreeViewRoot.Add(serverChildren);
+            server.Close();
         }
 
         public event PropertyChangedEventHandler PropertyChanged = null;
         protected void OnPropertyChanged(string info) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
     }
 
-    public class Category : ObservableCollection<Category>
+    public class Category
     {
-        public Category()
-        {
-        }
         public Category(string name)
         {
             Name = name;
         }
         public string Name { get; set; }
 
-        public Category Children { get; set; }
-    }
+        public string Column1 { get; set; }
 
-    public class ServerList : ObservableCollection<SchemaList>
-    {
-        public ServerList()
-        {
-        }
-        public ServerList(string name)
-        {
-            Name = name;
-        }
-        public string Name { get; set; }
+        public string Column2 { get; set; }
 
-        public SchemaList Children { get; set; }
-    }
-
-    public class SchemaList : ObservableCollection<TableList>
-    {
-        public SchemaList()
-        {
-        }
-        public SchemaList(string name)
-        {
-            Name = name;
-        }
-        public string Name { get; set; }
-
-        public TableList Children { get; set; }
-    }
-
-    public class TableList : ObservableCollection<Table>
-    {
-        public TableList()
-        {
-        }
-        public TableList(string name)
-        {
-            Name = name;
-        }
-        public string Name { get; set; }
-    }
-
-    public class Table
-    {
-        public string Name;
-
-        public Table(string name)
-        {
-            Name = name;
-        }
+        public List<Category> Children { get; set; }
     }
 }

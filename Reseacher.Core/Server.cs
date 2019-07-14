@@ -29,6 +29,10 @@ namespace Reseacher.Core
             set => _connection.ConnectionString = value;
         }
 
+        public ConnectionInfo BridgeServerInformation => _client.ConnectionInfo;
+
+        public bool BridgeServerStatus => _client.IsConnected;
+
         private bool _useBridgeServer = false;
 
         public bool UseBridgeServer
@@ -135,7 +139,7 @@ namespace Reseacher.Core
 
         public IEnumerable<T> GetData<T>(string query, object param = null, IDbTransaction transaction = null) => _connection.Query<T>(query, param, transaction);
 
-        private void BridgeOpen()
+        public void BridgeOpen()
         {
             if (_bridgeServer.HasKeyFile)
             {
@@ -153,7 +157,7 @@ namespace Reseacher.Core
             _forward.Start();
         }
 
-        private void BridgeClose()
+        public void BridgeClose()
         {
             _forward.Stop();
             _forward.Dispose();
