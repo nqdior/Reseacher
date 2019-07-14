@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,18 +28,23 @@ namespace Reseacher
             InitializeComponent();
         }
 
+        TreeViewModelView model = new TreeViewModelView();
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            DataContext = new OSAndBrowser();
+            DataContext = model;
+        }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            model.Modeltest();
         }
     }
 
-    public class OSAndBrowser
+    public class TreeViewModelView : INotifyPropertyChanged
     {
-        public Category Categories { get; set; }
-        public OSAndBrowser()
+        public Category TreeViewRoot { get; set; }
+        public TreeViewModelView()
         {
             var server = new Server("test", Engine.MySQL);
 
@@ -57,71 +63,50 @@ namespace Reseacher
                 UserName = "root",
                 Password = "2006079aA"
             };
-            var list = new List<Server>
+            var serverRack = new List<Server>
             {
                 server
             };
             var test = new DatabaseService(server);
-            var schemas = test.GetSchemaList();
-            var schemaCategory = new Category(server.Name);
 
-            
-            var tableCategory = new Category("test");
-            var serverChildren = new Category("test");
-            foreach (var aaaa in list)
+            TreeViewRoot = new Category();
+            var schemaList = test.GetSchemaList();
+            foreach (var _server in serverRack)
             {
-                var cateChildren = new Category(aaaa.Name);
-                foreach (var schema in schemas)
+                var serverChildren = new Category(_server.Name)
                 {
-                    var tables = test.GetTableList(schema.Name);
-                    var tableChildren = new Category();
-                    foreach (var table in tables)
+                    Children = new Category()
+                };
+                TreeViewRoot.Add(serverChildren);
+
+                foreach (var _schema in schemaList)
+                {
+                    var schemaChildren = new Category(_schema.Name)
                     {
-                        tableChildren.Add(new Category(table.Name));
+                        Children = new Category()
+                    };
+                    var tableList = test.GetTableList(_schema.Name);
+                    foreach (var _table in tableList)
+                    {
+                        var tableChildren = new Category(_table.Name);
+                        schemaChildren.Children.Add(tableChildren);
                     }
-                    cateChildren.Add(tableChildren);
-                 }
-                schemaCategory.Add(new Category(aaaa.Name));
+                    serverChildren.Children.Add(schemaChildren);
+                }
             }
-            serverChildren.Children = new Category();
-            serverChildren.Children.Add(schemaCategory);
-            Console.WriteLine(schemaCategory);
-            Categories = serverChildren;
-            //Categories = new Category()
-            //{
-            //    new Category("OS") {
-            //        Children = new Category {
-            //            new Category("Windows") {
-            //                Children = new Category {
-            //                    new Category("Windows 8"),
-            //                    new Category("Windows 7"),
-            //                    new Category("Windows Vista"),
-            //                    new Category("Windows XP"),
-            //                }
-            //            },
-            //            new Category("Mac OS X"),
-            //            new Category("Linux")
-            //        }
-            //    },
-            //    new Category("ブラウザ") {
-            //        Children = new Category {
-            //            new Category("Internet Explorer") {
-            //                Children = new Category {
-            //                    new Category("IE 11.0"),
-            //                    new Category("IE 10.0"),
-            //                    new Category("IE 9.0"),
-            //                    new Category("IE 8.0"),
-            //                    new Category("IE 7.0"),
-            //                }
-            //            },
-            //            new Category("Firefox"),
-            //            new Category("Chrome"),
-            //            new Category("Opera"),
-            //            new Category("Safari"),
-            //        }
-            //    }
-            //};
         }
+
+        public void Modeltest()
+        {
+            var serverChildren = new Category("ばばば")
+            {
+                Children = new Category()
+            };
+            TreeViewRoot.Add(serverChildren);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged = null;
+        protected void OnPropertyChanged(string info) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
     }
 
     public class Category : ObservableCollection<Category>
