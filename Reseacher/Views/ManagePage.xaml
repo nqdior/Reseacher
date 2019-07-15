@@ -5,8 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Reseacher"
              xmlns:treeListView="clr-namespace:TreeListView;assembly=TreeListView"
-             mc:Ignorable="d" Loaded="UserControl_Loaded">
+             mc:Ignorable="d">
 
+    <!--<UserControl.Resources>
+        <Style x:Key="myHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Hidden" />
+        </Style>
+    </UserControl.Resources>-->
+    
     <!-- スクロールバーは独自で実装してやんなきゃいけねんだ！くそ！くそＭＳ！！F.U.C.K！！！！！ -->
     <ScrollViewer HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Right" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
         <treeListView:TreeListView
@@ -18,18 +24,20 @@
             Style="{StaticResource VirtualizedMetroTreeListView}">
             <treeListView:TreeListView.View>
                 <GridView>
-                    <GridViewColumn 
+                <!--<GridView ColumnHeaderContainerStyle="{StaticResource myHeaderStyle}">-->
+                    <GridViewColumn
                                 Width="200" 
-                                Header="Name" 
+                                Header="名称" 
                                 DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn
-                                Width="100"
+                                Width="50"
                                 DisplayMemberBinding="{Binding Column1}"
-                                Header="AAAAA" />
+                                Header="行数" />
                     <GridViewColumn
-                                Width="200"
+                                Width="50"
                                 DisplayMemberBinding="{Binding Column2}"
-                                Header="Description" />
+                                Header="項目数"/>
+
                 </GridView>
             </treeListView:TreeListView.View>
         </treeListView:TreeListView>

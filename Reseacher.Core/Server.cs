@@ -29,10 +29,6 @@ namespace Reseacher.Core
             set => _connection.ConnectionString = value;
         }
 
-        public ConnectionInfo BridgeServerInformation => _client.ConnectionInfo;
-
-        public bool BridgeServerStatus => _client.IsConnected;
-
         private bool _useBridgeServer = false;
 
         public bool UseBridgeServer
@@ -141,15 +137,7 @@ namespace Reseacher.Core
 
         public void BridgeOpen()
         {
-            if (_bridgeServer.HasKeyFile)
-            {
-                var pkfile = new PrivateKeyFile(_bridgeServer.KeyFilePath, _bridgeServer.Password);
-                _client = new SshClient(_bridgeServer.Host, _bridgeServer.Port, _bridgeServer.UserName, pkfile);
-            }
-            else
-            {
-                _client = new SshClient(_bridgeServer.Host, _bridgeServer.Port, _bridgeServer.UserName, _bridgeServer.Password);
-            }
+            _client = _bridgeServer.CreateSshClient();
             _client.Connect();
 
             _forward = new ForwardedPortLocal(_connection.DataSource, ConnectionStringsPort, "127.0.0.1", ConnectionStringsPort);
@@ -159,10 +147,10 @@ namespace Reseacher.Core
 
         public void BridgeClose()
         {
-            _forward.Stop();
-            _forward.Dispose();
-            _client.Disconnect();
-            _client.Dispose();
+            _forward?.Stop();
+            _forward?.Dispose();
+            _client?.Disconnect();
+            _client?.Dispose();
         }
 
         private uint ConnectionStringsPort

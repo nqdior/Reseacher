@@ -35,6 +35,39 @@ namespace Reseacher
                 dddddd.Visibility = Visibility.Hidden;
             }
             dragblzControl.FormLoadEnded();
+
+            var server = new Server("test", Engine.MySQL);
+
+            var constr = ConnectionStringBuilderProvider.MySqlConnectionStringBuilder;
+            constr.Server = "127.0.0.1";
+            constr.Port = 3306;
+            constr.UserID = "root";
+            constr.Password = "password";
+            constr.ConnectionTimeout = 5;
+            server.ConnectionString = constr.ToString();
+
+            server.UseBridgeServer = true;
+            server.BridgeServer = new BridgeServer
+            {
+                Host = "192.168.1.3",
+                Port = 22,
+                UserName = "root",
+                Password = "2006079aA"
+            };
+            Nucleus.ReadConfig();
+
+            TreeListViewModel treeViewModel = new TreeListViewModel();
+            sidePanel.managePage.DataContext = treeViewModel;
+            treeViewModel.DrawTreeView(Nucleus.Servers);
+
+            Nucleus.Servers.PropertyChanged += Servers_PropertyChanged;
+        }
+
+        private void Servers_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            TreeListViewModel treeViewModel = new TreeListViewModel();
+            sidePanel.managePage.DataContext = treeViewModel;
+            treeViewModel.DrawTreeView(Nucleus.Servers);     
         }
 
         private void GridSplitter_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)

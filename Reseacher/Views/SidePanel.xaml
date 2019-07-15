@@ -40,7 +40,7 @@
             </Style>
         </TabControl.Resources>
         <TabItem Header="Header1">
-            <local:ManagePage />
+            <local:ManagePage x:Name="managePage" />
         </TabItem>
         <TabItem Header="Header2"></TabItem>
         <TabItem Header="Header3"></TabItem>
