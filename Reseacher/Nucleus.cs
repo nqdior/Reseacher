@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace Reseacher
 {
+    /* reseacher core class */
     internal static class Nucleus
     {
         public static MainWindow mainWindow { get; set; }

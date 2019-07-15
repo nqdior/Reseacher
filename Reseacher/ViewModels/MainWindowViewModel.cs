@@ -35,8 +35,6 @@ namespace Reseacher
 
         public static Func<object> NewItemFactory => () => new TabContent("新規ビュー", new DataViewPage());
 
-        public static Func<object> NewItemFactory2 => () => new TabContent("サーバ追加ビュー", new AddPage());
-
         public IInterTabClient InterTabClient1 { get; }
     }
 }

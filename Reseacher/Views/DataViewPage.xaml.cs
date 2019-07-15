@@ -1,5 +1,8 @@
 ﻿using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
+using System;
+using System.Data;
+using System.Windows;
 using System.Windows.Controls;
 using System.Xml;
 
@@ -17,6 +20,37 @@ namespace Reseacher
             {
                 Editor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
             }
+            var model = new ComboBoxViewModel();
+            model.DrawComboBox(Nucleus.Servers);
+            DataContext = model;
+        }
+
+        DataTable result;
+
+        private void Editor_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.F5)
+            {
+                try
+                {
+                    Nucleus.Servers[serverComboBox.Text].Open();
+                    result = Nucleus.Servers[serverComboBox.Text].Fill(Editor.Text, "xxx");
+                    dataGrid.DataContext = result.DefaultView;           
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    try { Nucleus.Servers["test"].Close(); } catch { /* ignore */}
+                }
+            }
+        }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Nucleus.Servers[serverComboBox.Text].Update(Editor.Text, result);
         }
     }
 }

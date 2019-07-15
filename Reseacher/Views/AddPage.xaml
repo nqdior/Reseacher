@@ -9,15 +9,12 @@
       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"       
       mc:Ignorable="d" Margin="10, 10, 10, 0">
     <UserControl.Resources>
-        
         <BooleanToVisibilityConverter x:Key="ssh" />
-
         <ObjectDataProvider x:Key="ServerEnumKey" MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
             <ObjectDataProvider.MethodParameters>
                 <x:Type TypeName="core:Engine"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
-
         <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
             <Setter Property="FontFamily" Value="Meryo UI"/>
             <Setter Property="Width" Value="200" />
@@ -29,7 +26,6 @@
             <Setter Property="Controls:TextBoxHelper.WatermarkAlignment" Value="Left" />
             <Setter Property="FontFamily" Value="Arial" />
         </Style>
-
         <Style TargetType="PasswordBox" BasedOn="{StaticResource MetroButtonRevealedPasswordBox}">
             <Setter Property="Width" Value="200" />
             <Setter Property="Margin" Value="0,10,0,10"/>
@@ -40,7 +36,6 @@
             <Setter Property="Controls:TextBoxHelper.WatermarkAlignment" Value="Left" />
             <Setter Property="FontFamily" Value="Arial" />
         </Style>
-        
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -58,26 +53,20 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+        
         <TextBox x:Name="connectionName" Controls:TextBoxHelper.Watermark="接続名称" Grid.Row="0" Grid.Column="0" MaxLength="15" />
         <ComboBox x:Name="engine" Grid.Row="0" Grid.Column="2" Height="36"
                           Controls:TextBoxHelper.UseFloatingWatermark="True"
                           Controls:TextBoxHelper.Watermark="データベース"
                           ItemsSource="{Binding Source={StaticResource ServerEnumKey}}"
                           SelectedIndex="0" />
-
         <TextBox x:Name="address" Controls:TextBoxHelper.Watermark="サーバアドレス" Grid.Row="1" Grid.Column="0" MaxLength="15" PreviewTextInput="InputIntegerOrPeriodOnly" />
         <TextBox x:Name="port" Controls:TextBoxHelper.Watermark="ポート" Grid.Row="1" Grid.Column="2" Width="80" MaxLength="5" PreviewTextInput="InputIntegerOnly" />
-
         <TextBox x:Name="userID" Controls:TextBoxHelper.Watermark="ユーザ" Grid.Row="2" Grid.Column="0" PreviewTextInput="InputIntegerOrAlphaOnly" />
         <PasswordBox x:Name="password" Controls:TextBoxHelper.Watermark="パスワード" Grid.Row="2" Grid.Column="2" />
-        
         <Button Width="80" Content="テスト接続" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="4" Height="20" />
-        
         <CheckBox x:Name="visibleSwitch" Content="SSHトンネルを使用して接続" IsChecked="True" Grid.Row="3" Grid.Column="0" Margin="10" Foreground="{DynamicResource ForegroundBrushKey}" />
-
         <StackPanel Grid.Row="4" Grid.ColumnSpan="5" Visibility="{Binding ElementName=visibleSwitch, Path=IsChecked, Converter={StaticResource ssh}}">
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
@@ -91,17 +80,13 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-
                 <TextBox x:Name="sshAddress" Controls:TextBoxHelper.Watermark="SSHサーバアドレス" Grid.Row="0" Grid.Column="0" MaxLength="15" PreviewTextInput="InputIntegerOrPeriodOnly" />
                 <TextBox x:Name="sshPort" Controls:TextBoxHelper.Watermark="SSHポート" Grid.Row="0" Grid.Column="2" Width="80" MaxLength="5" PreviewTextInput="InputIntegerOnly" />
-
                 <TextBox x:Name="sshUserID" Controls:TextBoxHelper.Watermark="SSHユーザ" Grid.Row="2" Grid.Column="0" PreviewTextInput="InputIntegerOrAlphaOnly" />
                 <PasswordBox x:Name="sshPassword" Controls:TextBoxHelper.Watermark="SSHパスワード" Grid.Row="2" Grid.Column="2" />
-
                 <Button Width="80" Content="SSHテスト接続" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="4" Height="20" />
             </Grid>
         </StackPanel>
-
         <Button Width="90" Content="登録" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" Height="20" Margin="0, 10, 0, 0" Click="Button_Click"/>
         <Button Width="90" Content="キャンセル" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="6" Grid.Column="0" Height="20" Margin="110, 10, 0, 0"/>
     </Grid>

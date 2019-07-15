@@ -105,7 +105,7 @@
                 <ColumnDefinition x:Name="ccccccccc" Width="4"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <local:SidePanel x:Name="sidePanel" Grid.Column="0" />
+            <local:ManagePage x:Name="managePage" Grid.Column="0" />
             <GridSplitter Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Stretch" MouseLeave="GridSplitter_MouseLeave" Background="{DynamicResource ThemeBrushKey}"/>
             <local:DragablzControl x:Name="dragblzControl" Grid.Column="2" />
         </Grid>
