@@ -1,4 +1,5 @@
-﻿using Reseacher.Core;
+﻿using MahApps.Metro.IconPacks;
+using Reseacher.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +10,7 @@ namespace Reseacher
 
     public class TreeListViewModel : INotifyPropertyChanged
     {
+
         public ObservableCollection<Category> TreeViewRoot { get; set; }
 
         public TreeListViewModel()
@@ -23,6 +25,7 @@ namespace Reseacher
             foreach (var _server in serverList)
             {
                 var serverChildren = new Category(_server.Name);
+                serverChildren.Kind = "server";
 
                 try
                 {
@@ -39,6 +42,7 @@ namespace Reseacher
                     {
                         var schemaChildren = new Category(_schema.Name)
                         {
+                            Kind = "database",
                             Children = new List<Category>()
                         };
 
@@ -79,6 +83,9 @@ namespace Reseacher
         {
             Name = name;
         }
+
+        public string Kind { get; set; } = "database";
+
         public string Name { get; set; }
 
         public string Column1 { get; set; }

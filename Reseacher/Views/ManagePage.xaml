@@ -7,11 +7,15 @@
              xmlns:treeListView="clr-namespace:TreeListView;assembly=TreeListView"
              xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
              xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" >
 
     <UserControl.Resources>
         <HierarchicalDataTemplate x:Key="treeViewTemplate" ItemsSource="{Binding Path=Children}">
-            <TextBlock Text="{Binding Path=Name}" />
+            <StackPanel Orientation="Horizontal" Height="20">
+                <iconPacks:PackIconMaterial Kind="{Binding Path=Kind}" Margin="0, 0, 5, 0" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Path=Name}" VerticalAlignment="Center" />
+            </StackPanel>
         </HierarchicalDataTemplate>
     </UserControl.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">

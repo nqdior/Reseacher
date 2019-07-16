@@ -116,9 +116,6 @@
     <Compile Include="Nucleus.cs" />
     <Compile Include="ServerRack.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
-    <Compile Include="Views\ManagePage - コピー.xaml.cs">
-      <DependentUpon>ManagePage - コピー.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\ManagePage.xaml.cs">
       <DependentUpon>ManagePage.xaml</DependentUpon>
     </Compile>
@@ -149,10 +146,6 @@
     <Compile Include="Views\Title.xaml.cs">
       <DependentUpon>Title.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\ManagePage - コピー.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\ManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
