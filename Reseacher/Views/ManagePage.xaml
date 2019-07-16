@@ -11,8 +11,7 @@
 
     <UserControl.Resources>
         <HierarchicalDataTemplate x:Key="treeViewTemplate" ItemsSource="{Binding Path=Children}">
-            <TextBlock Text="{Binding Path=Name}" >
-            </TextBlock>
+            <TextBlock Text="{Binding Path=Name}" />
         </HierarchicalDataTemplate>
     </UserControl.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">

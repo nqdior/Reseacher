@@ -53,7 +53,16 @@ namespace Reseacher
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var server = CreateServer();
-            Nucleus.Servers.Add(server);
+
+            try
+            {
+                Nucleus.Servers.Add(server);
+                Nucleus.WriteConfig();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private Server CreateServer()

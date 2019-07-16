@@ -79,7 +79,7 @@
                           Grid.Column="0" >
                         <MenuItem Header="ファイル(_F)" />
                         <MenuItem Header="新規(_N)" Click="MenuItem_Click" />
-                        <MenuItem Header="編集(_E)" />
+                        <MenuItem Header="編集(_E)" Click="MenuItem_Click_1" />
                         <MenuItem Header="オプション(_O)" >
                             <MenuItem IsCheckable="True" Header="オプション1" />
                             <MenuItem IsCheckable="True" Header="オプション2" />

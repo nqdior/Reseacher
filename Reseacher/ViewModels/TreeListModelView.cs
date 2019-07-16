@@ -1,4 +1,5 @@
 ﻿using Reseacher.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -15,18 +16,19 @@ namespace Reseacher
             TreeViewRoot = new ObservableCollection<Category>();
         }
 
+        /* 二回目以降はつりーびゅーるーとさわるほうがよきよきだよ */
         public void DrawTreeView(ServerRack serverRack)
         {
             var serverList = serverRack.ToList();
             foreach (var _server in serverList)
             {
+                var serverChildren = new Category(_server.Name);
+
                 try
                 {
-                    // まずはサーバをツリーに追加する。
-                    var serverChildren = new Category(_server.Name);
+                    // まずはサーバをツリーに追加する。 
                     serverChildren.Children = new List<Category>();
                     serverChildren.Column1 = _server.Engine.ToString();
-                    TreeViewRoot.Add(serverChildren);
 
                     // こっそり接続してみる。
                     _server.Open();
@@ -39,6 +41,8 @@ namespace Reseacher
                         {
                             Children = new List<Category>()
                         };
+
+                        /* テーブルを取得するところ
                         var tableList = service.GetTableList(_schema.Name);
                         foreach (var _table in tableList)
                         {
@@ -50,12 +54,16 @@ namespace Reseacher
                             schemaChildren.Children.Add(tableChildren);
                         }
                         schemaChildren.Column1 = _schema.TableCount.ToString();
+                        */
+
                         serverChildren.Children.Add(schemaChildren);
                     }
+
                 }
                 catch { /* ignore */ }
                 finally
                 {
+                    TreeViewRoot.Add(serverChildren);
                     _server.Close();
                 }
             }

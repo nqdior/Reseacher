@@ -26,8 +26,18 @@ namespace Reseacher.Core
         public string ConnectionString
         {
             get => _connection.ConnectionString;
-            set => _connection.ConnectionString = value;
+            set
+            {
+                var test = value.ToLower().Trim();
+                if (!test.Contains("persistsecurityinfo=true"))
+                {
+                    value += ";Persist Security Info=true;";
+                }
+                _connection.ConnectionString = value;
+            }
         }
+
+        private string _temporaryConnectionString;
 
         private bool _useBridgeServer = false;
 

@@ -20,5 +20,6 @@ namespace Reseacher
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
             e.Handled = true;
         }
+
     }
 }

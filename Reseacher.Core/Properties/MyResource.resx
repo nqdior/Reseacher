@@ -148,10 +148,8 @@ FROM
 		TABLE_NAME
 	) C
 	ON T.TABLE_SCHEMA = C.TABLE_SCHEMA AND T.TABLE_NAME = C.TABLE_NAME
+WHERE
+T.TABLE_SCHEMA = '{0}';
 </value>
-  </data>
-  <data name="TABLES_WHERE" xml:space="preserve">
-    <value>WHERE
-T.TABLE_SCHEMA = '{0}'</value>
   </data>
 </root>

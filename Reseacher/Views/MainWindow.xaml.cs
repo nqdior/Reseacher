@@ -38,18 +38,20 @@ namespace Reseacher
             }
             dragblzControl.FormLoadEnded();
 
-            Nucleus.ReadConfig();
+           Nucleus.ReadConfig();
 
-            var treeViewModel = new TreeListViewModel();
+            treeViewModel = new TreeListViewModel();
             managePage.DataContext = treeViewModel;
             treeViewModel.DrawTreeView(Nucleus.Servers);
             
             Nucleus.Servers.PropertyChanged += Servers_PropertyChanged;
         }
 
+        private TreeListViewModel treeViewModel;
+
         private void Servers_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            var treeViewModel = new TreeListViewModel();
+            treeViewModel = new TreeListViewModel();
             managePage.DataContext = treeViewModel;
             treeViewModel.DrawTreeView(Nucleus.Servers);     
         }
@@ -70,6 +72,11 @@ namespace Reseacher
             TaskBarHeight *= (int)ratio;
 
             margin.Height = WindowState == WindowState.Maximized ? new GridLength(TaskBarHeight) : new GridLength(0);
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            treeViewModel.TreeViewRoot.RemoveAt(0);
         }
     }
 }
