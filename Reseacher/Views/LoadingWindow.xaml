@@ -35,7 +35,6 @@
         </Grid.RowDefinitions>
 
         <local:Title x:Name="drawer" Grid.Row="1" Grid.Column="1" MediaEnded="LogoDrawer_MediaEnded"/>
-        <local:DatabaseState x:Name="state" Grid.Row="1" Grid.Column="0" />
         <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="{DynamicResource AccentBrushKey}"/>
         <Label x:Name="label_per" 
                Grid.Row="2"
