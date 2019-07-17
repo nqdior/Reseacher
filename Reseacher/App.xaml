@@ -23,8 +23,6 @@
                 <ResourceDictionary Source="pack://application:,,,/Dragablz;component/Themes/mahapps.xaml" />
                 <!-- / MahApps Resources -->
 
-                <ResourceDictionary Source="pack://application:,,,/TreeListView;component/Resources/TreeListView.xaml" />
-
             </ResourceDictionary.MergedDictionaries>
 
             <!-- Dragablz Styles -->

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -21,5 +22,12 @@ namespace Reseacher
             e.Handled = true;
         }
 
+        private void TreeView1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Console.WriteLine(((TextBlock)e.OriginalSource).Text);
+            var server = ((TextBlock)e.OriginalSource).Text;
+
+            Console.WriteLine(Nucleus.Servers[server]);
+        }
     }
 }

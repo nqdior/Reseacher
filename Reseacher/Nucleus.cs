@@ -16,6 +16,8 @@ namespace Reseacher
 
         internal static void ReadConfig()
         {
+            if (File.Exists(Application.StartupPath + "/Settings.json") == false) return;
+
             var settings = new List<SettingJson>();
             using (var fs = new FileStream(Application.StartupPath + "/Settings.json", FileMode.Open, FileAccess.Read))
             {

@@ -45,21 +45,6 @@ namespace Reseacher
                             Kind = "database",
                             Children = new List<Category>()
                         };
-
-                        /* テーブルを取得するところ
-                        var tableList = service.GetTableList(_schema.Name);
-                        foreach (var _table in tableList)
-                        {
-                            var tableChildren = new Category(_table.Name)
-                            {
-                                Column1 = _table.RowCount.ToString(),
-                                Column2 = _table.ColumnCount.ToString()
-                            };
-                            schemaChildren.Children.Add(tableChildren);
-                        }
-                        schemaChildren.Column1 = _schema.TableCount.ToString();
-                        */
-
                         serverChildren.Children.Add(schemaChildren);
                     }
 
@@ -73,6 +58,24 @@ namespace Reseacher
             }
         }
 
+        public void Test(ServerRack serverRack)
+        {
+            serverRack["eve-dev-10"].Open();
+            var service = new DatabaseService(serverRack["eve-dev-10"]);
+
+            var tableList = service.GetTableList("Master18");
+            foreach (var _table in tableList)
+            {
+                var tableChildren = new Category(_table.Name)
+                {
+                    Column1 = _table.RowCount.ToString(),
+                    Column2 = _table.ColumnCount.ToString()
+                };
+                TreeViewRoot[0].Children[0].Children.Add(tableChildren);
+            }
+            serverRack["eve-dev-10"].Close();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged = null;
         protected void OnPropertyChanged(string info) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
     }
@@ -84,7 +87,7 @@ namespace Reseacher
             Name = name;
         }
 
-        public string Kind { get; set; } = "database";
+        public string Kind { get; set; }
 
         public string Name { get; set; }
 

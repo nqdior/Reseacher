@@ -3,10 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Reseacher"
-             xmlns:treeListView="clr-namespace:TreeListView;assembly=TreeListView"
-             xmlns:dockablz="http://dragablz.net/winfx/xaml/dockablz"
-             xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" >
 
@@ -18,10 +14,13 @@
             </StackPanel>
         </HierarchicalDataTemplate>
     </UserControl.Resources>
+    
     <ScrollViewer HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
             <TreeView HorizontalAlignment="Stretch" Margin="7"  Name="treeView1"
+                  MouseDoubleClick="TreeView1_MouseDoubleClick"
                   VerticalAlignment="Stretch"
                   ItemTemplate="{StaticResource treeViewTemplate}"
                   ItemsSource="{Binding TreeViewRoot}" />
     </ScrollViewer>
+    
 </UserControl>

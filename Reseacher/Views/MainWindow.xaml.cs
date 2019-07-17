@@ -51,9 +51,11 @@ namespace Reseacher
 
         private void Servers_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            treeViewModel = new TreeListViewModel();
-            managePage.DataContext = treeViewModel;
-            treeViewModel.DrawTreeView(Nucleus.Servers);     
+            //treeViewModel = new TreeListViewModel();
+            //managePage.DataContext = treeViewModel;
+            //treeViewModel.DrawTreeView(Nucleus.Servers);
+
+            treeViewModel.Test(Nucleus.Servers);
         }
 
         private void GridSplitter_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
