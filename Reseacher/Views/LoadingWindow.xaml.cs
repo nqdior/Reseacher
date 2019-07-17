@@ -3,19 +3,85 @@ using MetroRadiance.UI.Controls;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Media;
 
 namespace Reseacher
 {
     public partial class LoadingWindow : MetroWindow
     {
+        Timer timer = new Timer();
+
+        string message = @"
+A ll-Range
+U nited
+R elational
+O nmemory
+R edeploys
+A pplication";
+
+        string message_init = @"
+A
+U
+R
+O
+R
+A";
+        int count = -1;
+        int secCount = 0;
+
         public LoadingWindow()
         {
             InitializeComponent();
 
+            label_def.Content = message;
+            label_red.Content = message_init;
+
             Background = (ThemeService.Current.Theme == Theme.Dark) ? Brushes.Black : Brushes.White;
             var animeName = (ThemeService.Current.Theme == Theme.Dark) ? "loading_b" : "loading_w";
             drawer.anime.Source = new Uri($"Resources/{animeName}.gif", UriKind.RelativeOrAbsolute);
+
+            timer.Tick += Timer_Tick;
+            timer.Interval = 100;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            secCount += 1;
+            if (secCount <= 10)
+            {
+                return;
+            }
+            if (count < 0)
+            {
+                label.Content = "";
+            }
+            else if (count == message.Length - 1)
+            {
+                drawer.Visibility = Visibility.Visible;
+                timer.Stop();
+                return;
+            }
+
+            if (message.Length - (count + 3) > 0)
+            {
+                count += 3;
+                label.Content = label.Content.ToString() + message[count - 2];
+                label.Content = label.Content.ToString() + message[count - 1];
+                label.Content = label.Content.ToString() + message[count];
+            }
+            else if (message.Length - (count + 2) > 0)
+            {
+                count += 2;
+                label.Content = label.Content.ToString() + message[count - 1];
+                label.Content = label.Content.ToString() + message[count];
+            }
+            else
+            {
+                count += 1;
+                label.Content = label.Content.ToString() + message[count];
+            }
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)

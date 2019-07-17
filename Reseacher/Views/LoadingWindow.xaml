@@ -16,7 +16,7 @@
         AllowsTransparency="True"
         Loaded="MetroWindow_Loaded"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen" >
+        WindowStartupLocation="CenterScreen" FontFamily="Arial" >
     <chrome:WindowChrome.Instance>
         <chrome:WindowChrome x:Name="WindowChrome">
         </chrome:WindowChrome>
@@ -44,7 +44,37 @@
         <Label x:Name="ver_label"
                Grid.Row="2"
                Grid.ColumnSpan="3"
-               Foreground="White"
-               HorizontalAlignment="Right" />
+               HorizontalAlignment="Right"
+               Foreground="White" />
+        <Label Grid.Row="1" 
+               Grid.Column="1" 
+               Margin="20" 
+               x:Name="label_def" 
+               FontFamily="GauFontRoot" 
+               FontSize="42" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top"
+               Opacity="0.3" />
+        <Label Grid.Row="1" 
+               Grid.Column="1" 
+               Margin="20" 
+               x:Name="label" 
+               FontFamily="GauFontRoot" 
+               FontSize="42" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top"
+               Opacity="0.5" 
+               Foreground="{DynamicResource AccentBrushKey}"/>
+        <Label Grid.Row="1" 
+               Grid.Column="1" 
+               Margin="20" 
+               x:Name="label_red" 
+               FontFamily="GauFontRoot" 
+               FontSize="42" 
+               HorizontalAlignment="Left" 
+               VerticalAlignment="Top"
+               Opacity="0.5" 
+               Foreground="{DynamicResource AccentBrushKey}"
+               FontWeight="Bold"/>
     </Grid>
 </controls:MetroWindow>
