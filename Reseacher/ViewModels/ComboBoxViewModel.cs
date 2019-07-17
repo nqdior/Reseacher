@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Reseacher
 {
-    public class ComboBoxViewModel : INotifyPropertyChanged
+    public class ComboBoxViewModel
     {
         public ObservableCollection<Item> Items { get; set; }
 
@@ -17,12 +17,9 @@ namespace Reseacher
         {
             foreach (var server in serverRack)
             {
-                Items.Add(new Item() { Name = server.Key });
+                Items.Add(new Item() { Name = server.Name });
             }           
         }
-
-        public event PropertyChangedEventHandler PropertyChanged = null;
-        protected void OnPropertyChanged(string info) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
     }
 
     public class Item

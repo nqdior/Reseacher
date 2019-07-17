@@ -111,7 +111,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Nucleus.cs" />
-    <Compile Include="ServerRack.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
     <Compile Include="Views\ManagePage.xaml.cs">
       <DependentUpon>ManagePage.xaml</DependentUpon>

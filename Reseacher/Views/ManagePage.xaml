@@ -15,12 +15,18 @@
         </HierarchicalDataTemplate>
     </UserControl.Resources>
     
-    <ScrollViewer HorizontalScrollBarVisibility="Visible" HorizontalAlignment="Stretch" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-            <TreeView HorizontalAlignment="Stretch" Margin="7"  Name="treeView1"
-                  MouseDoubleClick="TreeView1_MouseDoubleClick"
-                  VerticalAlignment="Stretch"
-                  ItemTemplate="{StaticResource treeViewTemplate}"
-                  ItemsSource="{Binding TreeViewRoot}" />
+    <ScrollViewer 
+        HorizontalScrollBarVisibility="Visible" 
+        HorizontalAlignment="Stretch" 
+        PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+        <TreeView 
+            HorizontalAlignment="Stretch"
+            Margin="7"
+            Name="treeView1"
+            VerticalAlignment="Stretch"
+            ItemTemplate="{StaticResource treeViewTemplate}"
+            ItemsSource="{Binding TreeViewRoot}"
+            PreviewMouseDoubleClick="TreeView1_MouseDoubleClick">
+        </TreeView>
     </ScrollViewer>
-    
 </UserControl>

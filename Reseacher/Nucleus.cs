@@ -10,9 +10,7 @@ namespace Reseacher
     /* reseacher core class */
     internal static class Nucleus
     {
-        public static MainWindow mainWindow { get; set; }
-
-        internal static readonly ServerRack Servers = new ServerRack();
+        internal static readonly ServerRack ServerRack = new ServerRack();
 
         internal static void ReadConfig()
         {
@@ -25,7 +23,7 @@ namespace Reseacher
             }
             foreach (var setting in settings)
             {
-                Servers.Add(setting.Name, new Server(setting.Name, setting.Engine.ToEngine())
+                ServerRack.Add(new Server(setting.Name, setting.Engine.ToEngine())
                 {
                     ConnectionString = setting.ConnectionString,
                     BridgeServer = new BridgeServer(setting.SshConnectionString),
@@ -37,15 +35,15 @@ namespace Reseacher
         internal static void WriteConfig()
         {
             var settings = new List<SettingJson>();
-            foreach (var server in Servers)
+            foreach (var server in ServerRack)
             {
                 settings.Add(new SettingJson
                 {
-                    Name = server.Value.Name,
-                    Engine = server.Value.Engine.ToString(),
-                    ConnectionString = server.Value.ConnectionString,
-                    SshConnectionString = server.Value.BridgeServer.ToString(),
-                    UseBridgeServer = server.Value.UseBridgeServer
+                    Name = server.Name,
+                    Engine = server.Engine.ToString(),
+                    ConnectionString = server.ConnectionString,
+                    SshConnectionString = server.BridgeServer.ToString(),
+                    UseBridgeServer = server.UseBridgeServer
                 });
             }
             using (var fs = new FileStream(Application.StartupPath + "/Settings.json", FileMode.Create, FileAccess.Write))

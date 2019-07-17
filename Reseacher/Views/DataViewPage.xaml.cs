@@ -21,7 +21,7 @@ namespace Reseacher
                 Editor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
             }
             var model = new ComboBoxViewModel();
-            model.DrawComboBox(Nucleus.Servers);
+            model.DrawComboBox(Nucleus.ServerRack);
             DataContext = model;
         }
 
@@ -33,8 +33,8 @@ namespace Reseacher
             {
                 try
                 {
-                    Nucleus.Servers[serverComboBox.Text].Open();
-                    result = Nucleus.Servers[serverComboBox.Text].Fill(Editor.Text, "xxx");
+                    Nucleus.ServerRack[serverComboBox.Text].Open();
+                    result = Nucleus.ServerRack[serverComboBox.Text].Fill(Editor.Text, "xxx");
                     dataGrid.DataContext = result.DefaultView;           
                 }
                 catch (Exception ex)
@@ -43,14 +43,14 @@ namespace Reseacher
                 }
                 finally
                 {
-                    try { Nucleus.Servers["test"].Close(); } catch { /* ignore */}
+                    try { Nucleus.ServerRack["test"].Close(); } catch { /* ignore */}
                 }
             }
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Nucleus.Servers[serverComboBox.Text].Update(Editor.Text, result);
+            Nucleus.ServerRack[serverComboBox.Text].Update(Editor.Text, result);
         }
     }
 }

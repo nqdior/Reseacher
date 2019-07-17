@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Reseacher
 {
@@ -24,10 +25,16 @@ namespace Reseacher
 
         private void TreeView1_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine(((TextBlock)e.OriginalSource).Text);
-            var server = ((TextBlock)e.OriginalSource).Text;
-
-            Console.WriteLine(Nucleus.Servers[server]);
+            if (treeView1.SelectedValue is Server == true)
+            {
+                var server = (Server)treeView1.SelectedValue;
+                server.FillSchemas();
+            }
+            else
+            {
+                var child = (Child)treeView1.SelectedValue;
+                Nucleus.ServerRack[child.Server].FillTables(child.Name);
+            }
         }
     }
 }

@@ -56,7 +56,7 @@ namespace Reseacher
 
             try
             {
-                Nucleus.Servers.Add(server);
+                Nucleus.ServerRack.Add(server);
                 Nucleus.WriteConfig();
             }
             catch (Exception ex)

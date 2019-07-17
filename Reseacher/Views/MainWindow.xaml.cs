@@ -25,6 +25,7 @@ namespace Reseacher
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             if (dragblzControl.Hacky == false)
             {
                 stripArea.MinWidth = 0;
@@ -38,27 +39,24 @@ namespace Reseacher
             }
             dragblzControl.FormLoadEnded();
 
-           Nucleus.ReadConfig();
+            Nucleus.ReadConfig();
 
-            treeViewModel = new TreeListViewModel();
+            treeViewModel = new TreeListViewModel(Nucleus.ServerRack);
             managePage.DataContext = treeViewModel;
-            treeViewModel.DrawTreeView(Nucleus.Servers);
-            
-            Nucleus.Servers.PropertyChanged += Servers_PropertyChanged;
         }
 
         private TreeListViewModel treeViewModel;
 
         private void Servers_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            //treeViewModel = new TreeListViewModel();
-            //managePage.DataContext = treeViewModel;
-            //treeViewModel.DrawTreeView(Nucleus.Servers);
+            // treeViewModel = new TreeListViewModel();
+            // managePage.DataContext = treeViewModel;
+            // treeViewModel.DrawTreeView(Nucleus.Servers);
 
-            treeViewModel.Test(Nucleus.Servers);
+            // treeViewModel.Test(Nucleus.Servers);
         }
 
-        private void GridSplitter_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void GridSplitter_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Settings.Default.StripWidth = stripArea.Width.Value;
             Settings.Default.Save();
@@ -80,5 +78,6 @@ namespace Reseacher
         {
             treeViewModel.TreeViewRoot.RemoveAt(0);
         }
+
     }
 }

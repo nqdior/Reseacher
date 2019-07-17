@@ -23,6 +23,7 @@
             <ComboBox x:Name="serverComboBox"
                       Grid.Column="1"
                       Width="Auto"
+                      SelectedIndex="0"
                       ItemsSource="{Binding Items}"
                       DisplayMemberPath="Name"/>
             <!--<ComboBox Grid.Column="2"
@@ -35,7 +36,10 @@
                   AutoGenerateColumns="True"
                   ItemsSource="{Binding}"
                   mah:DataGridHelper.EnableCellEditAssist="True" />
-        <GridSplitter Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Background="{DynamicResource ThemeBrushKey}"/>
+        <GridSplitter Grid.Row="2" 
+                      Grid.Column="2" 
+                      HorizontalAlignment="Stretch" 
+                      Background="{DynamicResource ThemeBrushKey}" />
         <avalon:TextEditor x:Name="Editor" 
                            Grid.Row="3" 
                            Background="#012456" 
@@ -45,6 +49,5 @@
                            Foreground="White"
                            ShowLineNumbers="True" 
                            KeyDown="Editor_KeyDown"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Height="18" Margin="34,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="56" Click="Button_Click"/>
     </Grid>
 </UserControl>
