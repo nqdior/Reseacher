@@ -16,16 +16,17 @@ namespace Reseacher
         public DataViewPage()
         {
             InitializeComponent();
+
             using (var reader = new XmlTextReader("./Resources/FbSql.xshd"))
             {
                 Editor.SyntaxHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
             }
-            var model = new ComboBoxViewModel();
-            model.DrawComboBox(Nucleus.ServerRack);
+
+            var model = new ComboBoxViewModel(Nucleus.ServerRack);
             DataContext = model;
         }
 
-        DataTable result;
+        private DataTable result;
 
         private void Editor_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
@@ -46,11 +47,6 @@ namespace Reseacher
                     try { Nucleus.ServerRack["test"].Close(); } catch { /* ignore */}
                 }
             }
-        }
-
-        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            Nucleus.ServerRack[serverComboBox.Text].Update(Editor.Text, result);
         }
     }
 }

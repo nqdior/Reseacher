@@ -125,7 +125,6 @@
     <Compile Include="ManageWindow\UserControl2.xaml.cs">
       <DependentUpon>UserControl2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\TreeViewModel.cs" />
     <Compile Include="ViewModels\TreeListModelView.cs" />
     <Compile Include="Views\DataViewPage.xaml.cs">
       <DependentUpon>DataViewPage.xaml</DependentUpon>

@@ -1,29 +1,14 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
 
 namespace Reseacher
 {
-    public class ComboBoxViewModel
+    public class ComboBoxViewModel 
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<Server> ServerItems { get; set; }
 
-        public ComboBoxViewModel()
+        public ComboBoxViewModel(ServerRack serverRack)
         {
-            Items = new ObservableCollection<Item>();
+            ServerItems = serverRack;
         }
-
-        public void DrawComboBox(ServerRack serverRack)
-        {
-            foreach (var server in serverRack)
-            {
-                Items.Add(new Item() { Name = server.Name });
-            }           
-        }
-    }
-
-    public class Item
-    {
-        public string Name { get; set; }
     }
 }

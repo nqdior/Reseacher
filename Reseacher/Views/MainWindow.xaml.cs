@@ -1,7 +1,4 @@
-﻿using Reseacher.Core;
-using Reseacher.Properties;
-using System;
-using System.Collections.Generic;
+﻿using Reseacher.Properties;
 using System.Windows;
 
 namespace Reseacher
@@ -13,11 +10,6 @@ namespace Reseacher
             InitializeComponent();
         }
 
-        /// <summary>
-        /// メニューアイテムの挙動どこかにまとめたい
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             dragblzControl.AddServerAddPage();
@@ -40,20 +32,7 @@ namespace Reseacher
             dragblzControl.FormLoadEnded();
 
             Nucleus.ReadConfig();
-
-            treeViewModel = new TreeListViewModel(Nucleus.ServerRack);
-            managePage.DataContext = treeViewModel;
-        }
-
-        private TreeListViewModel treeViewModel;
-
-        private void Servers_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            // treeViewModel = new TreeListViewModel();
-            // managePage.DataContext = treeViewModel;
-            // treeViewModel.DrawTreeView(Nucleus.Servers);
-
-            // treeViewModel.Test(Nucleus.Servers);
+            managePage.DataContext = new TreeViewModelView(Nucleus.ServerRack);
         }
 
         private void GridSplitter_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -73,11 +52,5 @@ namespace Reseacher
 
             margin.Height = WindowState == WindowState.Maximized ? new GridLength(TaskBarHeight) : new GridLength(0);
         }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            treeViewModel.TreeViewRoot.RemoveAt(0);
-        }
-
     }
 }
