@@ -44,7 +44,7 @@ namespace Reseacher
                 }
                 finally
                 {
-                    try { Nucleus.ServerRack["test"].Close(); } catch { /* ignore */}
+                    try { Nucleus.ServerRack[serverComboBox.Text].Close(); } catch { /* ignore */}
                 }
             }
         }

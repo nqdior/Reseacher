@@ -15,8 +15,8 @@ namespace Reseacher
         string message = @"
 A ll-Range
 U nited
-R elational
-O nmemory
+R egional
+O n-memory
 R edeploys
 A pplication";
 

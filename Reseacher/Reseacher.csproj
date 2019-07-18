@@ -133,9 +133,6 @@
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\StyleConverter.cs" />
-    <Compile Include="Views\SidePanel.xaml.cs">
-      <DependentUpon>SidePanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\Version.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\ThemeSelectionViewModel.cs" />
@@ -165,10 +162,6 @@
     <Page Include="Views\LoadingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="Views\SidePanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DragablzControl.xaml">
       <SubType>Designer</SubType>

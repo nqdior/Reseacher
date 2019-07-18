@@ -8,6 +8,8 @@ namespace Reseacher
         public MainWindow()
         {
             InitializeComponent();
+
+            /* http://iyemon018.hatenablog.com/entry/2016/03/04/150330 */
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
