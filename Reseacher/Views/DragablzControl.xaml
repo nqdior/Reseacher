@@ -8,7 +8,7 @@
              xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
              mc:Ignorable="d"
              Loaded="UserControl_Loaded"
-             WindowChrome.IsHitTestVisibleInChrome="True" >
+             WindowChrome.IsHitTestVisibleInChrome="True">
     <dockablz:Layout Grid.Column="2">
         <dragablz:TabablzControl x:Name="InitialTabablzControl"
                                  ItemsSource="{Binding TabContents}"                            

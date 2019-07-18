@@ -9,9 +9,9 @@ namespace Reseacher
     /// <summary>
     /// ManagePage.xaml の相互作用ロジック
     /// </summary>
-    public partial class ManagePage : UserControl
+    public partial class ManageArea : UserControl
     {
-        public ManagePage()
+        public ManageArea()
         {
             InitializeComponent();
         }

@@ -113,10 +113,10 @@
     <Compile Include="Nucleus.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
-    <Compile Include="Views\ManagePage.xaml.cs">
-      <DependentUpon>ManagePage.xaml</DependentUpon>
+    <Compile Include="Views\ManageArea.xaml.cs">
+      <DependentUpon>ManageArea.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddPage.xaml.cs">
+    <Compile Include="Views\Page\AddPage.xaml.cs">
       <DependentUpon>AddPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ManageWindow\UserControl1.xaml.cs">
@@ -125,8 +125,8 @@
     <Compile Include="ManageWindow\UserControl2.xaml.cs">
       <DependentUpon>UserControl2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\TreeListModelView.cs" />
-    <Compile Include="Views\DataViewPage.xaml.cs">
+    <Compile Include="ViewModels\TreeModelView.cs" />
+    <Compile Include="Views\Page\DataViewPage.xaml.cs">
       <DependentUpon>DataViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoadingWindow.xaml.cs">
@@ -136,14 +136,11 @@
     <Compile Include="Models\Version.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\ThemeSelectionViewModel.cs" />
-    <Compile Include="Views\Title.xaml.cs">
-      <DependentUpon>Title.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\ManagePage.xaml">
+    <Page Include="Views\ManageArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddPage.xaml">
+    <Page Include="Views\Page\AddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,7 +152,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DataViewPage.xaml">
+    <Page Include="Views\Page\DataViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,7 +164,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\IntroductionPage.xaml">
+    <Page Include="Views\Page\IntroductionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,7 +179,7 @@
     <Compile Include="Views\DragablzControl.xaml.cs">
       <DependentUpon>DragablzControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IntroductionPage.xaml.cs">
+    <Compile Include="Views\Page\IntroductionPage.xaml.cs">
       <DependentUpon>IntroductionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -191,18 +188,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ThemeControl.xaml">
+    <Page Include="Views\AppThemeMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Title.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\ThemeControl.xaml.cs">
-      <DependentUpon>ThemeControl.xaml</DependentUpon>
+    <Compile Include="Views\AppThemeMenu.xaml.cs">
+      <DependentUpon>AppThemeMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

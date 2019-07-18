@@ -19,7 +19,6 @@ namespace Reseacher
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
             if (dragblzControl.Hacky == false)
             {
                 stripArea.MinWidth = 0;
@@ -34,7 +33,7 @@ namespace Reseacher
             dragblzControl.FormLoadEnded();
 
             Nucleus.ReadConfig();
-            managePage.DataContext = new TreeViewModelView(Nucleus.ServerRack);
+            managePage.DataContext = new TreeModelView(Nucleus.ServerRack);
         }
 
         private void GridSplitter_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)

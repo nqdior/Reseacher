@@ -17,34 +17,29 @@
         <Grid Grid.Row="0" Margin="0,0,0,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="150" />
             </Grid.ColumnDefinitions>
             <ComboBox x:Name="serverComboBox"
                       ItemsSource="{Binding ServerItems, Mode=OneWay}" 
                       Grid.Column="1" 
                       SelectedIndex="0"
-                      DisplayMemberPath="Name" />
-            <!--<ComboBox x:Name="schemaComboBox"
-                      ItemsSource="{Binding ServerItems, Mode=OneWay}"
-                      Grid.Column="2"
-                      SelectedIndex="0"
-                      DisplayMemberPath="Name"/>-->
+                      DisplayMemberPath="Name"/>
         </Grid>
         <DataGrid x:Name="dataGrid"
                   Grid.Row="1"
                   AutoGenerateColumns="True"
-                  ItemsSource="{Binding}" >
+                  ItemsSource="{Binding}">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="FontSize" Value="12" />
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontSize" Value="12"/>
                 </Style>
             </DataGrid.ColumnHeaderStyle>
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
-                    <Setter Property="FontSize" Value="12" />
-                    <Setter Property="FontFamily" Value="Consolas" />
-                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="FontFamily" Value="Consolas"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
                 </Style>
             </DataGrid.CellStyle>
         </DataGrid>

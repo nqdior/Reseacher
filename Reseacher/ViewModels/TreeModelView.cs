@@ -3,11 +3,11 @@
 namespace Reseacher
 {
 
-    public class TreeViewModelView
+    public class TreeModelView
     {
         public ObservableCollection<Server> TreeViewRoot { get; set; }
 
-        public TreeViewModelView(ServerRack serverRack)
+        public TreeModelView(ServerRack serverRack)
         {
             TreeViewRoot = serverRack;
         }
