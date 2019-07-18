@@ -1,5 +1,6 @@
 ﻿using Reseacher.Properties;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Reseacher
 {
@@ -9,6 +10,11 @@ namespace Reseacher
         {
             InitializeComponent();
 
+            /*
+            var app = new AppThemeMenu();
+            app.SetValue(Grid.RowProperty, 0);
+            test.Children.Add(app);
+            */
             /* http://iyemon018.hatenablog.com/entry/2016/03/04/150330 */
         }
 
@@ -26,13 +32,11 @@ namespace Reseacher
                 bbbbb.Height =
                 stripArea.Width =
                 ccccccccc.Width = new GridLength(0);
-                dddddd.Visibility = Visibility.Hidden;
+                title.Visibility = Visibility.Hidden;
 
                 return;
             }
             dragblzControl.FormLoadEnded();
-
-            Nucleus.ReadConfig();
             managePage.DataContext = new TreeModelView(Nucleus.ServerRack);
         }
 

@@ -44,6 +44,12 @@ A";
             timer.Tick += Timer_Tick;
             timer.Interval = 30;
             timer.Start();
+
+            Task task = new Task(() =>
+            {
+                Nucleus.ReadConfig();
+            });
+            task.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
