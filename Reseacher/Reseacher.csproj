@@ -116,6 +116,9 @@
     <Compile Include="Views\ManageArea.xaml.cs">
       <DependentUpon>ManageArea.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MenuArea.xaml.cs">
+      <DependentUpon>MenuArea.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Page\AddPage.xaml.cs">
       <DependentUpon>AddPage.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\ThemeSelectionViewModel.cs" />
     <Page Include="Views\ManageArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,8 +22,10 @@ namespace Reseacher
             ThemeService.Current.Register(this, radTheme, radAccent);
 
             // Splash screen show
-#if DEBUG
+#if !DEBUG
             new LoadingWindow().ShowDialog();
+#else
+            Nucleus.ReadConfig();
 #endif
             ShutdownMode = ShutdownMode.OnMainWindowClose;
 

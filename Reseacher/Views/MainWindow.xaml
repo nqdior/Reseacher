@@ -44,7 +44,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30" x:Name="aaaaa" />
+            <RowDefinition Height="35" x:Name="aaaaa" />
             <RowDefinition Height="Auto" x:Name="bbbbb" />
             <RowDefinition />
             <RowDefinition Height="25" />
@@ -52,63 +52,15 @@
         </Grid.RowDefinitions>
 
         <!-- caption bar area -->
-        <Border Grid.Row="0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40" />
-                    <ColumnDefinition Width="250"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <controls:CaptionIcon Grid.Column="0" Margin="2,0,0,0">
-                    <Ellipse Width="15"	Height="15" Fill="{DynamicResource ActiveForegroundBrushKey}" />
-                </controls:CaptionIcon>
-                <Menu Foreground="{DynamicResource ForegroundBrushKey}"
-                          Background="{DynamicResource ThemeBrushKey}"
-		                  FontSize="12"
-                          VerticalAlignment="Center"
-                          HorizontalAlignment="Left"
-                          Grid.Column="1"
-                          WindowChrome.IsHitTestVisibleInChrome="True">
-                        <MenuItem Header="ファイル(_F)" />
-                        <MenuItem Header="新規(_N)" Click="MenuItem_Click" />
-                        <MenuItem Header="編集(_E)" />
-                        <MenuItem Header="オプション(_O)" >
-                            <MenuItem IsCheckable="True" Header="オプション1" />
-                            <MenuItem IsCheckable="True" Header="オプション2" />
-                            <MenuItem IsCheckable="True" Header="オプション3" />
-                        </MenuItem>
-                    </Menu>
-                <local:AppThemeMenu Grid.Column="2"
-                                    Width="60"
-                                    HorizontalAlignment="Left"
-                                    WindowChrome.IsHitTestVisibleInChrome="True"/>
-                <controls:SystemButtons Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-            </Grid>
-        </Border>
-
+        <Grid Name="CaptionBarArea">
+            <local:MenuArea />
+        </Grid>
+        
         <!-- menu bar area -->
-        <!-- <local:AppThemeMenu Grid.Row="1"/> -->
+        <Grid Name="MenuBarArea" Grid.Row="1"/>
 
         <!-- content area -->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="stripArea"
-                                  MinWidth="30"
-                                  Width="{Binding Path=StripWidth,
-                                  Source={x:Static properties:Settings.Default}}"/>
-                <ColumnDefinition x:Name="ccccccccc"
-                                  Width="4"/>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <local:ManageArea x:Name="managePage" Grid.Column="0" />
-            <GridSplitter Grid.Row="1"
-                          Grid.Column="1"
-                          Width="5"
-                          HorizontalAlignment="Stretch"
-                          PreviewMouseLeftButtonUp="GridSplitter_MouseLeftButtonUp"
-                          Background="{DynamicResource ThemeBrushKey}"/>
-            <local:DragablzControl x:Name="dragblzControl" Grid.Column="2" />
-        </Grid>
+        <Grid Name="ContentArea" Grid.Row="2"/>
 
         <!-- under bar area -->
         <Grid Grid.Row="3" Background="{DynamicResource AccentBrushKey}"/>
