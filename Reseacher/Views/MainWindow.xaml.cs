@@ -20,39 +20,30 @@ namespace Reseacher
             {
                 _initializeSubComponent();
             }
-            else
+            else // draw subwindow
             {
                 _initializeMainComponent();
             }
             /* http://iyemon018.hatenablog.com/entry/2016/03/04/150330 */
         }
 
-        private MenuArea menuArea { get; set; }
-
         private void _initializeMainComponent()
         {
             /* メニューアイテムの描画 */
             var titleBarArea = new ColumnDefinition
             {
-                Width = new GridLength(350)
+                Width = new GridLength(400)
             };
             var catchableArea = new ColumnDefinition();
             CaptionBarArea.ColumnDefinitions.Add(titleBarArea);
             CaptionBarArea.ColumnDefinitions.Add(catchableArea);
 
-            menuArea = new MenuArea();
+            var menuArea = new MenuArea();
             menuArea.SetValue(Grid.ColumnProperty, 0);
             CaptionBarArea.Children.Add(menuArea);
 
-            /* システムボタンの描画 */
-            var systemButtons = new SystemButtons
-            {
-                VerticalAlignment = VerticalAlignment.Center,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(0, 0, 0, 5)
-            };
-            systemButtons.SetValue(Grid.ColumnProperty, 3);
-            CaptionBarArea.Children.Add(systemButtons);
+            // システムボタンの描画
+            CaptionBarArea.Children.Add(_systemButtons);
 
             /* メインコンテンツの描画 */
             // グリッドの描画
@@ -82,7 +73,6 @@ namespace Reseacher
             splitter.SetValue(Grid.ColumnProperty, 1);
 
             var dragblzControl = new DragablzControl();
-            dragblzControl.dragblzControl.FixedHeaderCount = 1;
             dragblzControl.SetValue(Grid.ColumnProperty, 2);
             ContentArea.Children.Add(manageArea);
             ContentArea.Children.Add(splitter);
@@ -92,10 +82,7 @@ namespace Reseacher
             manageArea.DataContext = new TreeModelView(Nucleus.ServerRack);
 
             /* イベントのハンドル */
-            menuArea.newTab.Click += (_object, _e) =>
-            {
-                dragblzControl.AddServerAddPage();
-            };
+            menuArea.newTab.Click += (_object, _e) => dragblzControl.AddServerAddPage();
 
             initialized = true;
         }
@@ -103,6 +90,7 @@ namespace Reseacher
         private void _initializeSubComponent()
         {
             /* サブウィンドウ用タイトルの描画 */
+
             // メインタイトルを非表示
             title.Visibility = Visibility.Hidden;
             // サブウィンドウ用タイトルを描画    
@@ -113,33 +101,35 @@ namespace Reseacher
                 FontFamily = new FontFamily("Segoe UI Light"),
                 FontSize = 16,
                 Foreground = (Brush)FindResource("ForegroundBrushKey"),
-                VerticalAlignment = VerticalAlignment.Center
+                VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(5, 0, 0, 0),
             };
             CaptionBarArea.Children.Add(titleBlock);
 
             /* システムボタンの描画 */
-            var systemButtons = new SystemButtons
-            {
-                VerticalAlignment = VerticalAlignment.Top,
-                HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(0, 0, 0, 5)
-            };
-            CaptionBarArea.Children.Add(systemButtons);
+            CaptionBarArea.Children.Add(_systemButtons);
 
             /* メインコンテンツの描画 */
-            var dragblzControl = new DragablzControl();
-            dragblzControl.dragblzControl.FixedHeaderCount = 0;
-            ContentArea.Children.Add(dragblzControl);
+            ContentArea.Children.Add(new DragablzControl());
+        }
+
+        private SystemButtons _systemButtons
+        {
+            get
+            {
+                var systemButtons = new SystemButtons
+                {
+                    VerticalAlignment = VerticalAlignment.Center,
+                    HorizontalAlignment = HorizontalAlignment.Right,
+                    Margin = new Thickness(0, 0, 0, 5)
+                };
+                systemButtons.SetValue(Grid.ColumnProperty, 3);
+                return systemButtons;
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void GridSplitter_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-           // Settings.Default.StripWidth = stripArea.Width.Value;
-           // Settings.Default.Save();
         }
 
         /// <summary> 最大化時にステータスバーが隠れないようにする対応。対応策模索中。 </summary>

@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Reseacher"
-             mc:Ignorable="d">
+             mc:Ignorable="d"
+          >
     
     <MenuItem.Resources>
         <ResourceDictionary>
@@ -33,9 +34,7 @@
                 <Setter Property="Header" Value="{Binding Name, Mode=OneWay}" />
             </Style>
 
-            <Style x:Key="AccentColorMenuItemStyle"
-                   TargetType="{x:Type MenuItem}"
-                   BasedOn="{StaticResource MetroMenuItem}">
+            <Style x:Key="AccentColorMenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MetroMenuItem}">
                 <Setter Property="Command" Value="{Binding ChangeAccentCommand}" />
                 <Setter Property="Icon" Value="{StaticResource AccentMenuIcon}" />
                 <Setter Property="Header" Value="{Binding Name, Mode=OneWay}" />
@@ -51,7 +50,4 @@
         </ResourceDictionary>
     </MenuItem.Resources>
     <local:ThemeSelectionViewModel />
-    <MenuItem.Header>
-        <TextBlock Text="テーマ(_T)" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    </MenuItem.Header>
 </MenuItem>

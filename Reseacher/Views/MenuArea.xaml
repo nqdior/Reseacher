@@ -20,5 +20,10 @@
         <MenuItem IsCheckable="True" Header="オプション2" />
         <MenuItem IsCheckable="True" Header="オプション3" />
     </MenuItem>
-    <reseacher:AppThemeMenuItem VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" />
+    <reseacher:AppThemeMenuItem>
+        <reseacher:AppThemeMenuItem.Header>
+            <TextBlock Text="テーマ(T)" Padding="0,0,0,1" VerticalAlignment="Center"/>
+        </reseacher:AppThemeMenuItem.Header>
+    </reseacher:AppThemeMenuItem>
+    <MenuItem Header="編集(_E)" />
 </Menu>
