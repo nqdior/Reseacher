@@ -5,9 +5,9 @@ namespace Reseacher
     /// <summary>
     /// MenuControl.xaml の相互作用ロジック
     /// </summary>
-    public partial class AppThemeMenu : UserControl
+    public partial class AppThemeMenuItem : MenuItem
     {
-        public AppThemeMenu()
+        public AppThemeMenuItem()
         {
             InitializeComponent();
         }

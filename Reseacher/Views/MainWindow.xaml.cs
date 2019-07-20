@@ -29,8 +29,6 @@ namespace Reseacher
 
         private MenuArea menuArea { get; set; }
 
-        private DragablzControl dragblzControl { get; set;}
-
         private void _initializeMainComponent()
         {
             /* メニューアイテムの描画 */
@@ -83,7 +81,8 @@ namespace Reseacher
             splitter.SetValue(Grid.RowProperty, 1);
             splitter.SetValue(Grid.ColumnProperty, 1);
 
-            dragblzControl = new DragablzControl();
+            var dragblzControl = new DragablzControl();
+            dragblzControl.dragblzControl.FixedHeaderCount = 1;
             dragblzControl.SetValue(Grid.ColumnProperty, 2);
             ContentArea.Children.Add(manageArea);
             ContentArea.Children.Add(splitter);
@@ -129,6 +128,7 @@ namespace Reseacher
 
             /* メインコンテンツの描画 */
             var dragblzControl = new DragablzControl();
+            dragblzControl.dragblzControl.FixedHeaderCount = 0;
             ContentArea.Children.Add(dragblzControl);
         }
 

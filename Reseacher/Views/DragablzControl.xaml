@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Reseacher.DragablzControl"
+﻿<dockablz:Layout x:Class="Reseacher.DragablzControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,23 +6,19 @@
              xmlns:local="clr-namespace:Reseacher"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
-             mc:Ignorable="d"
-             Loaded="UserControl_Loaded"
-             WindowChrome.IsHitTestVisibleInChrome="True">
-    <dockablz:Layout Grid.Column="2">
-        <dragablz:TabablzControl x:Name="InitialTabablzControl"
+             mc:Ignorable="d">
+    <dragablz:TabablzControl x:Name="dragblzControl"
                                  ItemsSource="{Binding TabContents}"                            
                                  HeaderMemberPath="Header"
                                  ConsolidateOrphanedItems="True"
                                  Margin="4, 0, 4, 4">
-            <dragablz:TabablzControl.InterTabController>
-                <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
-            </dragablz:TabablzControl.InterTabController>
-            <dragablz:TabablzControl.ContentTemplate>
-                <DataTemplate DataType="{x:Type local:TabContent}">
-                    <ContentControl Content="{Binding Content}" Margin="4 4 4 4" FontSize="14" />
-                </DataTemplate>
-            </dragablz:TabablzControl.ContentTemplate>
-        </dragablz:TabablzControl>
-    </dockablz:Layout>
-</UserControl>
+        <dragablz:TabablzControl.InterTabController>
+            <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
+        </dragablz:TabablzControl.InterTabController>
+        <dragablz:TabablzControl.ContentTemplate>
+            <DataTemplate DataType="{x:Type local:TabContent}">
+                <ContentControl Content="{Binding Content}" Margin="4 4 4 4" FontSize="14" />
+            </DataTemplate>
+        </dragablz:TabablzControl.ContentTemplate>
+    </dragablz:TabablzControl>
+</dockablz:Layout>

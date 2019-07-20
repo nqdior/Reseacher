@@ -1,17 +1,14 @@
-﻿using Reseacher.Properties;
-using System.Windows;
-using System.Windows.Controls;
+﻿using Dragablz;
+using Dragablz.Dockablz;
 
 namespace Reseacher
 {
     /// <summary>
     /// DragablzControl.xaml の相互作用ロジック
     /// </summary>
-    public partial class DragablzControl : UserControl
+    public partial class DragablzControl : Layout
     {
         private static bool _hackyIsFirstWindow = true;
-
-        public bool Hacky => _hackyIsFirstWindow;
 
         public void FormLoadEnded()
         {
@@ -31,11 +28,7 @@ namespace Reseacher
         public void AddServerAddPage()
         {
             DataContext = MainWindowViewModel.CreateWithAdds();
-            InitialTabablzControl.SelectedIndex = InitialTabablzControl.Items.Count - 1;
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
+            dragblzControl.SelectedIndex = dragblzControl.Items.Count - 1;
         }
     }
 }
