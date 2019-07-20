@@ -44,7 +44,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="35" x:Name="aaaaa" />
+            <RowDefinition Height="Auto" x:Name="aaaaa" />
             <RowDefinition Height="Auto" x:Name="bbbbb" />
             <RowDefinition />
             <RowDefinition Height="25" />
@@ -52,10 +52,10 @@
         </Grid.RowDefinitions>
 
         <!-- caption bar area -->
-        <Grid Name="CaptionBarArea">
-            <local:MenuArea />
-        </Grid>
-        
+        <Border Grid.Row="0" controls:MetroWindow.IsCaptionBar="True">
+            <Grid Name="CaptionBarArea"/>
+        </Border>
+
         <!-- menu bar area -->
         <Grid Name="MenuBarArea" Grid.Row="1"/>
 

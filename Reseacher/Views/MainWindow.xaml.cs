@@ -1,13 +1,14 @@
-﻿using MetroRadiance.UI.Controls;
-using Reseacher.Properties;
-using System;
+﻿using MetroRadiance.UI;
+using MetroRadiance.UI.Controls;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Shell;
+using System.Windows.Data;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace Reseacher
 {
-    public partial class MainWindow : MetroRadiance.UI.Controls.MetroWindow
+    public partial class MainWindow : MetroWindow
     {
         private static bool initialized = false;
 
@@ -26,19 +27,24 @@ namespace Reseacher
             /* http://iyemon018.hatenablog.com/entry/2016/03/04/150330 */
         }
 
+        private MenuArea menuArea { get; set; }
+
+        private DragablzControl dragblzControl { get; set;}
+
         private void _initializeMainComponent()
         {
-            /*  */
-
-            /* テーマアイテムの描画 */
-            var appThemeMenu = new AppThemeMenu
+            /* メニューアイテムの描画 */
+            var titleBarArea = new ColumnDefinition
             {
-                Width = 60,
-                HorizontalAlignment = HorizontalAlignment.Left
+                Width = new GridLength(350)
             };
-            appThemeMenu.SetValue(Grid.ColumnProperty, 2);
-            appThemeMenu.SetValue(WindowChrome.IsHitTestVisibleInChromeProperty, true);
-            CaptionBarArea.Children.Add(appThemeMenu);
+            var catchableArea = new ColumnDefinition();
+            CaptionBarArea.ColumnDefinitions.Add(titleBarArea);
+            CaptionBarArea.ColumnDefinitions.Add(catchableArea);
+
+            menuArea = new MenuArea();
+            menuArea.SetValue(Grid.ColumnProperty, 0);
+            CaptionBarArea.Children.Add(menuArea);
 
             /* システムボタンの描画 */
             var systemButtons = new SystemButtons
@@ -61,9 +67,7 @@ namespace Reseacher
             {
                 Width = new GridLength(4)
             };
-            var dragblzArea = new ColumnDefinition
-            {
-            };
+            var dragblzArea = new ColumnDefinition();
             ContentArea.ColumnDefinitions.Add(treeViewArea);
             ContentArea.ColumnDefinitions.Add(splitterArea);
             ContentArea.ColumnDefinitions.Add(dragblzArea);
@@ -79,7 +83,7 @@ namespace Reseacher
             splitter.SetValue(Grid.RowProperty, 1);
             splitter.SetValue(Grid.ColumnProperty, 1);
 
-            var dragblzControl = new DragablzControl();
+            dragblzControl = new DragablzControl();
             dragblzControl.SetValue(Grid.ColumnProperty, 2);
             ContentArea.Children.Add(manageArea);
             ContentArea.Children.Add(splitter);
@@ -88,18 +92,58 @@ namespace Reseacher
             dragblzControl.FormLoadEnded();
             manageArea.DataContext = new TreeModelView(Nucleus.ServerRack);
 
+            /* イベントのハンドル */
+            menuArea.newTab.Click += (_object, _e) =>
+            {
+                dragblzControl.AddServerAddPage();
+            };
+
             initialized = true;
         }
 
         private void _initializeSubComponent()
         {
+            /* サブウィンドウ用タイトルの描画 */
+            // メインタイトルを非表示
+            title.Visibility = Visibility.Hidden;
+            var ellipse = new Ellipse
+            {
+                Width = 15,
+                Height = 15,
+                Fill = (Brush)FindResource("ActiveForegroundBrushKey"),
+                HorizontalAlignment = HorizontalAlignment.Left
+            };
+            // サブウィンドウ用タイトルを描画
+            var captionIcon = new CaptionIcon
+            {
+                Margin = new Thickness(4, 0, 0, 0),
+                Content = ellipse
+            };           
+            var titleBlock = new TextBlock
+            {
+                Text = "Reseacher Aurora",
+                TextTrimming = TextTrimming.CharacterEllipsis,
+                FontFamily = new FontFamily("Segoe UI Light"),
+                FontSize = 16,
+                Foreground = (Brush)FindResource("ForegroundBrushKey"),
+                Margin = new Thickness(40, 0, 0, 0),
+                VerticalAlignment = VerticalAlignment.Center
+            };
+            CaptionBarArea.Children.Add(captionIcon);
+            CaptionBarArea.Children.Add(titleBlock);
+
+            /* システムボタンの描画 */
+            var systemButtons = new SystemButtons
+            {
+                VerticalAlignment = VerticalAlignment.Top,
+                HorizontalAlignment = HorizontalAlignment.Right,
+                Margin = new Thickness(0, 0, 0, 5)
+            };
+            CaptionBarArea.Children.Add(systemButtons);
+
+            /* メインコンテンツの描画 */
             var dragblzControl = new DragablzControl();
             ContentArea.Children.Add(dragblzControl);
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            // dragblzControl.AddServerAddPage();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
