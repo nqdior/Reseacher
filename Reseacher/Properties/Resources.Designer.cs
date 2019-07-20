@@ -61,22 +61,12 @@ namespace Reseacher.Properties {
         }
         
         /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
-        public static System.Drawing.Bitmap loading_b {
+        public static System.Drawing.Icon Aurora {
             get {
-                object obj = ResourceManager.GetObject("loading_b", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        public static System.Drawing.Bitmap loading_w {
-            get {
-                object obj = ResourceManager.GetObject("loading_w", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("Aurora", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

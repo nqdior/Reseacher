@@ -1,0 +1,2 @@
+            var black = (Brush)new BrushConverter().ConvertFromString("#000A0E");
+            Background = (ThemeService.Current.Theme == Theme.Dark) ? black : Brushes.White;

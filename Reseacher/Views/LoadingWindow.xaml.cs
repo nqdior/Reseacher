@@ -5,11 +5,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace Reseacher
 {
     public partial class LoadingWindow : MetroWindow
     {
+        public string SelectedImage { get; set; }
+
+        public RepeatBehavior RepeatBehavior = RepeatBehavior.Forever;
+
         Timer timer = new Timer();
 
         string message = @"
@@ -33,23 +38,24 @@ A";
         public LoadingWindow()
         {
             InitializeComponent();
-
+            
             label_def.Content = message;
             label_red.Content = message_init;
+            animetion.DataContext = this;
 
             Background = (ThemeService.Current.Theme == Theme.Dark) ? Brushes.Black : Brushes.White;
             var animeName = (ThemeService.Current.Theme == Theme.Dark) ? "loading_b" : "loading_w";
-            anime.Source = new Uri($"Resources/{animeName}.gif", UriKind.RelativeOrAbsolute);
-
-            timer.Tick += Timer_Tick;
-            timer.Interval = 30;
-            timer.Start();
+            SelectedImage = $@"pack://application:,,,/images/{animeName}.gif";
 
             Task task = new Task(() =>
             {
                 Nucleus.ReadConfig();
             });
             task.Start();
+
+            timer.Tick += Timer_Tick;
+            timer.Interval = 30;
+            timer.Start();      
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -65,7 +71,6 @@ A";
             }
             else if (count == message.Length - 1)
             {
-                Visibility = Visibility.Visible;
                 timer.Stop();
                 return;
             }

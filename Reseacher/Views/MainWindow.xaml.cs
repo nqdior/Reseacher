@@ -106,19 +106,7 @@ namespace Reseacher
             /* サブウィンドウ用タイトルの描画 */
             // メインタイトルを非表示
             title.Visibility = Visibility.Hidden;
-            var ellipse = new Ellipse
-            {
-                Width = 15,
-                Height = 15,
-                Fill = (Brush)FindResource("ActiveForegroundBrushKey"),
-                HorizontalAlignment = HorizontalAlignment.Left
-            };
-            // サブウィンドウ用タイトルを描画
-            var captionIcon = new CaptionIcon
-            {
-                Margin = new Thickness(4, 0, 0, 0),
-                Content = ellipse
-            };           
+            // サブウィンドウ用タイトルを描画    
             var titleBlock = new TextBlock
             {
                 Text = "Reseacher Aurora",
@@ -126,10 +114,8 @@ namespace Reseacher
                 FontFamily = new FontFamily("Segoe UI Light"),
                 FontSize = 16,
                 Foreground = (Brush)FindResource("ForegroundBrushKey"),
-                Margin = new Thickness(40, 0, 0, 0),
                 VerticalAlignment = VerticalAlignment.Center
             };
-            CaptionBarArea.Children.Add(captionIcon);
             CaptionBarArea.Children.Add(titleBlock);
 
             /* システムボタンの描画 */
