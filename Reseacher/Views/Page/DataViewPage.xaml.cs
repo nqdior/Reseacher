@@ -38,7 +38,8 @@ namespace Reseacher
             serverComboBox.Text = server;
             serverComboBox.SelectedValue = Nucleus.ServerRack[server];
 
-            Editor.Text = $"SELECT * FROM {schemaName}.{tableName}";
+            var query = CommandFormatter.Format($"SELECT * FROM {schemaName}.{tableName};");
+            Editor.Text = query;
             GetData();
         }
 
@@ -59,6 +60,7 @@ namespace Reseacher
         {
             if (e.Key == System.Windows.Input.Key.F5)
             {
+                Editor.Text = CommandFormatter.Format(Editor.Text);
                 GetData();
             }
         }

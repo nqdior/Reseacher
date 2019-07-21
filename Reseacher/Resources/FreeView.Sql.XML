@@ -1,0 +1,582 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FreeView.Sql</name>
+    </assembly>
+    <members>
+        <member name="T:FreeView.Sql.EndOfLineCode">
+            <summary>
+            行末コードを定義します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/26 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.EndOfLineCode.CrLf">
+            <summary>
+            CR+LF(\r\n)です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.EndOfLineCode.Cr">
+            <summary>
+            CR(\r)です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.EndOfLineCode.Lf">
+            <summary>
+            LF(\n)です。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatter">
+            <summary>
+            SQLを整形します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter._parser">
+            <summary>
+            SQL解析。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter._rule">
+            <summary>
+            SQLルール。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter._functionBracket">
+            <summary>
+            丸カッコが関数のものかどうかを覚える。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter._indent">
+            <summary>
+            インデント。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter._parsedCollection">
+            <summary>
+            解析後のトークンコレクション。
+            </summary>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.#ctor(FreeView.Sql.SqlRule)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="rule">SQL変換ルール。</param>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.Format(System.String)">
+            <summary>
+            与えられたSQLを整形します。
+            改行で終了するSQL文は、整形後も改行付きであるようにします。
+            </summary>
+            <param name="sql">整形前のSQL文。</param>
+            <returns>整形後のSQL文。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.Format(FreeView.Sql.SqlFormatter.SqlTokenCollection)">
+            <summary>
+            字句の配列を、指定されたSQL書式規則に従って変換します。
+            </summary>
+            <param name="collection">変換前の字句の配列。</param>
+            <returns>変換後の字句の配列。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.InsertReturnAndIndent(FreeView.Sql.SqlFormatter.SqlTokenCollection,System.Int32,System.Int32)">
+            <summary>
+            改行とインデントを挿入する。
+            </summary>
+            <param name="collection">リスト。</param>
+            <param name="index">インデックス。</param>
+            <param name="indent">インデント。</param>
+            <returns>空白を挿入した場合は１を、空白を置き換えた場合は０を返す。</returns>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.Indent">
+            <summary>
+            インデントを設定または取得します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.ParsedCollection">
+            <summary>
+            解析後のトークンコレクションを取得します。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatter.SqlTokenCollection">
+            <summary>
+            SQLのトークンのコレクションです。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatter.Functions">
+            <summary>
+            関数を取得します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.Functions._functions">
+            <summary>
+            関数。
+            </summary>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.Functions.#ctor">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.Functions.Item(System.Int32)">
+            <summary>
+            関数を取得します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.Functions.Count">
+            <summary>
+            関数の件数を取得します。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatter.SqlTokenType">
+            <summary>
+            SQLトークンの定数を定義します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.Space">
+            <summary>
+            空文字（TAB,CR等も１つの文字列として含む）です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.Symbol">
+            <summary>
+            記号（"&gt;="のような２つで１つの記号もある）です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.Keyword">
+            <summary>
+            キーワード（"SELECT", "ORDER"など）です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.Function">
+            <summary>
+            関数（"TO_DATE", "TO_NUMBER"など）です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.Name">
+            <summary>
+            名前（テーブル名、列名など。ダブルクォーテーションが付く場合がある）です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.Value">
+            <summary>
+            値（数値（整数、実数）、文字列など）です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.Comment">
+            <summary>
+            コメント（シングルラインコメントとマルチラインコメントがある）です。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.End">
+            <summary>
+            SQL文の終わりです。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlTokenType.Unknown">
+            <summary>
+            解析不可能なトークン（通常のSQLではありえない）です。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatter.SqlToken">
+            <summary>
+            SQLのトークンを表します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlToken._type">
+            <summary>
+            トークン種別を表します。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlToken._text">
+            <summary>
+            トークンのテキストを表します。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlToken._position">
+            <summary>
+            トークンの開始位置を表します。
+            </summary>
+            <remarks>
+            0 未満（初期値の-1）の場合は開始位置を表さない（意味のない）値です。
+            SqlParser クラスにより解析された結果（SqlTokenCollection）のみ正しい値が設定されます。
+            </remarks>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlToken.#ctor(FreeView.Sql.SqlFormatter.SqlTokenType,System.String)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="type">トークン種別。</param>
+            <param name="text">トークンのテキスト。</param>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlToken.#ctor(FreeView.Sql.SqlFormatter.SqlTokenType,System.String,System.Int32)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="type">トークン種別。</param>
+            <param name="text">トークンのテキスト。</param>
+            <param name="position">トークンの開始位置。</param>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.SqlToken.Type">
+            <summary>
+            トークン種別を設定または取得します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.SqlToken.Text">
+            <summary>
+            トークンのテキストを設定または取得します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.SqlToken.Position">
+            <summary>
+            トークンの開始位置を設定または取得します。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatter.MultiWords">
+            <summary>
+            複数ワードを取得します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.MultiWords._multiWords">
+            <summary>
+            複数ワード。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.MultiWords._maxWordsCount">
+            <summary>
+            複数ワードの最大ワード数。
+            </summary>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.MultiWords.#ctor">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.MultiWords.Item(System.Int32)">
+            <summary>
+            複数ワードを取得します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.MultiWords.Count">
+            <summary>
+            複数ワードの件数を取得します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.MultiWords.MaxWordsCount">
+            <summary>
+            複数ワードの件数を取得します。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatter.ReservedWords">
+            <summary>
+            予約済ワードを取得します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.ReservedWords._reservedWords">
+            <summary>
+            予約済ワード。
+            </summary>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.ReservedWords.#ctor">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.ReservedWords.Item(System.Int32)">
+            <summary>
+            予約済ワードを取得します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlFormatter.ReservedWords.Count">
+            <summary>
+            予約済ワードの件数を取得します。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatter.SqlParser">
+            <summary>
+            SQLを解析します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlParser.MultiCharacterSymbol">
+            <summary>
+            複数文字からなる記号。
+            </summary>
+            <remarks>例えば || は文字列結合にあたります。</remarks>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlParser._before">
+            <summary>
+            解析前の文字列。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlParser._character">
+            <summary>
+            解析中の文字。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlParser._position">
+            <summary>
+            解析中の位置。 
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlParser._reservedWords">
+            <summary>
+            予約済ワード。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlParser._multiWords">
+            <summary>
+            複数後のワード。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlFormatter.SqlParser._functions">
+            <summary>
+            関数。
+            </summary>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.#ctor">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.IsLetter(System.Char)">
+            <summary>
+            文字として認識して妥当かどうかを判定します。
+            全角文字なども文字として認識を許容するものと判断します。
+            </summary>
+            <param name="c">文字。</param>
+            <returns>文字として認識して妥当であれば true それ以外は false を返す。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.IsSpace(System.Char)">
+            <summary>
+            与えられた文字が、ホワイトスペース文字かどうかを判定します。
+            </summary>
+            <param name="c">文字。</param>
+            <returns>ホワイトスペース文字ならば true それ以外は false を返す。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.IsDigit(System.Char)">
+            <summary>
+            数字かどうかを判定します。
+            </summary>
+            <param name="c">文字。</param>
+            <returns>数字であれば true それ以外は false を返す。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.IsSymbol(System.Char)">
+            <summary>
+            記号かどうかを判定します。
+            </summary>
+            <param name="c">文字。</param>
+            <returns>記号であれば true それ以外は false を返す。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.IsFunction(System.String)">
+            <summary>
+            関数かどうかを取得します。
+            </summary>
+            <param name="value">調べる値。</param>
+            <returns>関数のとき true を返す。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.IsReservedWord(System.String)">
+            <summary>
+            予約語かどうかを取得します。
+            </summary>
+            <param name="value">調べる値。</param>
+            <returns>予約語のとき true を返す。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.NextToken">
+            <summary>
+            トークンを次に進めます。
+            </summary>
+            <remarks>
+            不正なSQLの場合は例外が発生します。
+            文法チェックは行っていない点に注意してください。
+            </remarks>
+            <returns>トークンを返します。</returns>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatter.SqlParser.Parse(System.String)">
+            <summary>
+            SQL文字列をトークンの配列に変換します。
+            </summary>
+            <param name="sql">変換前のSQL文。</param>
+            <returns>Tokenの配列。</returns>
+        </member>
+        <member name="T:FreeView.Sql.KeywordConversion">
+            <summary>
+            キーワードの変換方法を定義します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/26 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.KeywordConversion.KeywordNone">
+            <summary>
+            変換を行いません。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.KeywordConversion.KeywordUpperCase">
+            <summary>
+            大文字に変換します。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.KeywordConversion.KeywordLowerCase">
+            <summary>
+            小文字に変換します。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlRule">
+            <summary>
+            SQLのルールを表します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.SqlRule._endOfLineCode">
+            <summary>
+            行末コード。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlRule._endOfLineCodeString">
+            <summary>
+            行末コードの文字列。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlRule._keywordConversion">
+            <summary>
+            キーワードの変換規則。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlRule._commaEndOfLineType">
+            <summary>
+            カンマの前後の行末コードの挿入方法。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.SqlRule._indentString">
+            <summary>
+            インデントの文字列。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlRule.EndOfLineCodeString">
+            <summary>
+            行末コードの文字列を取得します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlRule.IndentString">
+            <summary>
+            インデントの文字列を取得または設定します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlRule.EndOfLineCode">
+            <summary>
+            行末コードを取得または設定します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlRule.KeywordConversion">
+            <summary>
+            キーワード変換を取得または設定します。
+            </summary>
+        </member>
+        <member name="P:FreeView.Sql.SqlRule.CommaEndOfLineType">
+            <summary>
+            カンマの前後の行末コードの挿入方法を取得または設定します。
+            </summary>
+        </member>
+        <member name="T:FreeView.Sql.SqlFormatterException">
+            <summary>
+            SQL フォーマッタの例外を定義します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/22 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatterException.#ctor">
+            <summary>
+            コンストラクタ。
+            </summary>
+        </member>
+        <member name="M:FreeView.Sql.SqlFormatterException.#ctor(System.String)">
+            <summary>
+            コンストラクタ。
+            </summary>
+            <param name="message">メッセージ。</param>
+        </member>
+        <member name="T:FreeView.Sql.CommaEndOfLineType">
+            <summary>
+            カンマの前後の行末コードの挿入方法を定義します。
+            </summary>
+            <![CDATA[
+            特記事項 ：
+              特になし。
+            更新履歴 ：
+              2010/04/26 Takahiro Watanabe（新規）。
+            ]]>
+        </member>
+        <member name="F:FreeView.Sql.CommaEndOfLineType.Before">
+            <summary>
+            前方で改行します。
+            </summary>
+        </member>
+        <member name="F:FreeView.Sql.CommaEndOfLineType.After">
+            <summary>
+            後方で改行します。
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -27,7 +27,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="4"/>
             <RowDefinition Height="*" />
@@ -42,7 +42,7 @@
             </Grid.ColumnDefinitions>
             <TextBox x:Name="tabNameText"
                      HorizontalAlignment="Left"
-                     Width="150"
+                     Width="Auto"
                      Grid.Column="0"
                      FontSize="12"
                      Controls:TextBoxHelper.Watermark="タブ名称"/>

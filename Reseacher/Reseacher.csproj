@@ -48,6 +48,10 @@
     <Reference Include="Dragablz">
       <HintPath>..\Dragablz\bin\Release\Dragablz.dll</HintPath>
     </Reference>
+    <Reference Include="FreeView.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c68645abd4e52e57, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\FreeView.Sql.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -113,13 +117,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\CommandFormatter.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Nucleus.cs" />
-    <Compile Include="Server.cs" />
+    <Compile Include="Models\Nucleus.cs" />
+    <Compile Include="Models\Server.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
     <Compile Include="Views\Page\ManagePage.xaml.cs">
       <DependentUpon>ManagePage.xaml</DependentUpon>
@@ -206,6 +211,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Content Include="Resources\FreeView.Sql.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
