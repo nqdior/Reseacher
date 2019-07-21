@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Aurora.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Aurora.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -212,10 +212,7 @@
     </EmbeddedResource>
     <Resource Include="Images\loading_b.gif" />
     <Resource Include="Images\loading_w.gif" />
-    <Resource Include="Aurora.ico" />
-    <Content Include="Resources\Aurora.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Resources\Aurora.ico" />
     <Content Include="Resources\FbSql.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

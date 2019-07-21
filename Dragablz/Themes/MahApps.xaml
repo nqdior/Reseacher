@@ -205,7 +205,8 @@
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" TargetName="Trapezoid"/>
                             <Setter Property="LongBasePenBrush" Value="{DynamicResource AccentColorBrush}" TargetName="Trapezoid"/>
-                            <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}"/>
+                            <!-- DEFAULT <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}"/>-->
+                            <Setter Property="Foreground" Value="White"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -11,6 +11,8 @@ namespace Reseacher
         {
             base.OnStartup(e);
 
+            System.Console.WriteLine("Hello,World!!");
+
             // Dragablz Theme
             var mahTheme = ThemeManager.GetAppTheme(Settings.Default.ThemeColor);
             var mahAccent = ThemeManager.GetAccent(Settings.Default.AccentColor);

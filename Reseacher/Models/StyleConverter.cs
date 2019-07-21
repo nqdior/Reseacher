@@ -1,6 +1,7 @@
 ﻿using MetroRadiance.UI;
 using MahApps.Metro;
 using System.Windows.Media;
+using System.Linq;
 
 namespace Reseacher
 {
@@ -15,11 +16,14 @@ namespace Reseacher
         {
             try
             {
-                return MetroRadiance.UI.Accent.GetAccentFromString(accent.Name.ToString());
+                return MetroRadiance.UI.Accent.GetAccentFromString(accent.Name);
             }
-            catch
+            catch /* if metroRadiance hasn't provided accent by mahApp's, then marApp's accent convert to metroRadiance color; */
             {
-                var color = (Color)ColorConverter.ConvertFromString(accent.Name.ToString());
+                var colorList = ThemeManager.Accents.Select(a => new { a.Name, Brush = a.Resources["AccentColorBrush"] as Brush });
+                var selectedColor = colorList.FirstOrDefault(r => r.Name == accent.Name).Brush;
+                var color = ((SolidColorBrush)selectedColor).Color;
+
                 return MetroRadiance.UI.Accent.FromColor(color);
             }
         }
