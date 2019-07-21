@@ -1,11 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29001.49
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reseacher", "Reseacher\Reseacher.csproj", "{8534D5C9-6595-473D-A5C2-2890D5D482B4}"
 	ProjectSection(ProjectDependencies) = postProject
 		{21B4AD15-D9FA-4873-BFAD-1EEEFBC6C264} = {21B4AD15-D9FA-4873-BFAD-1EEEFBC6C264}
+		{7B11011C-7FD7-4AB0-A1AD-04E940B026DE} = {7B11011C-7FD7-4AB0-A1AD-04E940B026DE}
 		{A6B0A741-5BE0-479D-B813-E65672350057} = {A6B0A741-5BE0-479D-B813-E65672350057}
 		{8AC9BDFA-32E8-473E-AC18-71E6BD214498} = {8AC9BDFA-32E8-473E-AC18-71E6BD214498}
 		{0AF0B9FF-D981-4D0F-A41F-C3AB6FE2F16D} = {0AF0B9FF-D981-4D0F-A41F-C3AB6FE2F16D}
@@ -23,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reseacher.Core.Demo", "Rese
 	ProjectSection(ProjectDependencies) = postProject
 		{8AC9BDFA-32E8-473E-AC18-71E6BD214498} = {8AC9BDFA-32E8-473E-AC18-71E6BD214498}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dragablz", "Dragablz\Dragablz.csproj", "{7B11011C-7FD7-4AB0-A1AD-04E940B026DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +70,12 @@ Global
 		{30F8756E-84F7-4612-8601-A5E0D023B3FB}.Release RETRO|Any CPU.Build.0 = Release|Any CPU
 		{30F8756E-84F7-4612-8601-A5E0D023B3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30F8756E-84F7-4612-8601-A5E0D023B3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B11011C-7FD7-4AB0-A1AD-04E940B026DE}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{7B11011C-7FD7-4AB0-A1AD-04E940B026DE}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{7B11011C-7FD7-4AB0-A1AD-04E940B026DE}.Release RETRO|Any CPU.ActiveCfg = Release|Any CPU
+		{7B11011C-7FD7-4AB0-A1AD-04E940B026DE}.Release RETRO|Any CPU.Build.0 = Release|Any CPU
+		{7B11011C-7FD7-4AB0-A1AD-04E940B026DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B11011C-7FD7-4AB0-A1AD-04E940B026DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

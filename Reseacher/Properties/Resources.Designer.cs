@@ -69,5 +69,33 @@ namespace Reseacher.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   A ll-Range
+        ///U nited
+        ///R egional
+        ///O n-memory
+        ///R edeploys
+        ///A pplication に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AURORA_DETAIL {
+            get {
+                return ResourceManager.GetString("AURORA_DETAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   A
+        ///U
+        ///R
+        ///O
+        ///R
+        ///A に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AURORA_HEAD {
+            get {
+                return ResourceManager.GetString("AURORA_HEAD", resourceCulture);
+            }
+        }
     }
 }

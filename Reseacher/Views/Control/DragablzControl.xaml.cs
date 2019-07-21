@@ -1,5 +1,6 @@
 ﻿using Dragablz;
 using Dragablz.Dockablz;
+using System.Collections.Specialized;
 
 namespace Reseacher
 {
@@ -13,6 +14,13 @@ namespace Reseacher
         public void FormLoadEnded()
         {
             _hackyIsFirstWindow = false;
+            MainWindowViewModel.result.TabContents.CollectionChanged += TabContents_CollectionChanged;
+        }
+
+        private void TabContents_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (dragblzControl.Items.Count == 1) return;
+            dragblzControl.SelectedIndex = e.NewStartingIndex;
         }
 
         public DragablzControl()
@@ -21,14 +29,14 @@ namespace Reseacher
 
             if (_hackyIsFirstWindow)
             {
-                DataContext = MainWindowViewModel.CreateWithSamples();
+                DataContext = MainWindowViewModel.CreateWithIntroduction();
             }
         }
 
         public void AddServerAddPage()
         {
             DataContext = MainWindowViewModel.CreateWithAdds();
-            dragblzControl.SelectedIndex = dragblzControl.Items.Count - 1;
+            
         }
     }
 }

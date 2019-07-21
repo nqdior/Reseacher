@@ -9,7 +9,7 @@ namespace Reseacher
 
         public static string Self => $"System version : {_self}";
 
-        private static string _aurora => "";// FileVersionInfo.GetVersionInfo(@"./Aurora.dll").FileVersion;
+        private static string _aurora => FileVersionInfo.GetVersionInfo(@"./Reseacher.Core.dll").FileVersion;
 
         public static string Aurora => $"Engine version : {_aurora}";
 

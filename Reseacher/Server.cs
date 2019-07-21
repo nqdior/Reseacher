@@ -26,51 +26,62 @@ namespace Reseacher
     {
         public Server(string name, Engine engine, string connectionString = "") : base (name, engine, connectionString) { }
 
-        public string Kind => "server";
+        public new void Open()
+        {
+            base.Open();
+
+            Kind = State == System.Data.ConnectionState.Open ? "serverNetwork" : "serverNetworkOff";
+            OnPropertyChanged("Kind");
+        }
+
+        public new void Close()
+        {
+            base.Close();
+
+            Kind = State == System.Data.ConnectionState.Open ? "serverNetwork" : "serverNetworkOff";
+            OnPropertyChanged("Kind");
+        }
+
+        public string Kind { get; set; } = "serverNetworkOff";
 
         public ObservableCollection<Child> Children { get; set; } = new ObservableCollection<Child>();
 
+        public void RemoveAllChildren()
+        {
+            foreach (var index in Enumerable.Range(0, Children.Count))
+            {
+                Children.RemoveAt(0);
+            }
+        }
+
         public void FillSchemas()
         {
-            try
-            {
-                Open();
+            var service = new DatabaseService(this);
+            var schemaList = service.GetSchemaList();
+            RemoveAllChildren();
 
-                var service = new DatabaseService(this);
-                var schemaList = service.GetSchemaList();
-
-                foreach (var _schema in schemaList)
-                {
-                    var schemaChildren = new Child(_schema.Name, "database");
-                    schemaChildren.Server = Name;
-                    Children.Add(schemaChildren);
-                }
-            }
-            finally
+            foreach (var _schema in schemaList)
             {
-                Close();
+                var schemaChildren = new Child(_schema.Name, "database");
+                schemaChildren.Server = Name;
+                schemaChildren.Parent = Name;
+                Children.Add(schemaChildren);
             }
         }
 
         public void FillTables(string schemaName)
         {
-            try
-            {
-                Open();
+            var service = new DatabaseService(this);
+            var tableList = service.GetTableList(schemaName);
+            var schemaChildren = Children.FirstOrDefault(c => c.Name == schemaName);
+            schemaChildren.RemoveAllChildren();
 
-                var service = new DatabaseService(this);
-                var tableList = service.GetTableList(schemaName);
-
-                foreach (var _table in tableList)
-                {
-                    var tableChildren = new Child(_table.Name, "table");
-                    tableChildren.Server = Name;
-                    Children.FirstOrDefault(c => c.Name == schemaName).Children.Add(tableChildren);
-                }
-            }
-            finally
+            foreach (var _table in tableList)
             {
-                Close();
+                var tableChildren = new Child(_table.Name, "table");
+                tableChildren.Server = Name;
+                tableChildren.Parent = schemaName;
+                schemaChildren.Children.Add(tableChildren);
             }
         }
 
@@ -89,10 +100,20 @@ namespace Reseacher
 
         public string Server { get; set; }
 
+        public string Parent { get; set; }
+
         public string Kind { get; set; }
 
         public string Name { get; set; }
 
         public ObservableCollection<Child> Children { get; set; } = new ObservableCollection<Child>();
+
+        public void RemoveAllChildren()
+        {
+            foreach (var index in Enumerable.Range(0, Children.Count))
+            {
+                Children.RemoveAt(0);
+            }
+        }
     }
 }

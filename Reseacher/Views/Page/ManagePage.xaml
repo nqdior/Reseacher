@@ -7,12 +7,14 @@
              mc:Ignorable="d">
 
     <UserControl.Resources>
-        <HierarchicalDataTemplate x:Key="treeViewTemplate" ItemsSource="{Binding Path=Children}">
+        <HierarchicalDataTemplate x:Key="treeViewTemplate"
+                                  ItemsSource="{Binding Path=Children}">
             <StackPanel Orientation="Horizontal" Height="20">
                 <iconPacks:PackIconMaterial
-                    Kind="{Binding Path=Kind}"
+                    Kind="{Binding Path=Kind, Mode=TwoWay}"
                     Margin="0, 0, 5, 0"
-                    VerticalAlignment="Center"/>
+                    VerticalAlignment="Center">
+                </iconPacks:PackIconMaterial>
                 <TextBlock
                     Text="{Binding Path=Name}"
                     VerticalAlignment="Center"/>

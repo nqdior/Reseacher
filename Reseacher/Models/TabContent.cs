@@ -1,6 +1,8 @@
-﻿namespace Reseacher
+﻿using System.ComponentModel;
+
+namespace Reseacher
 {
-    public class TabContent
+    public class TabContent : INotifyPropertyChanged
     {
         public TabContent(string header, object content)
         {
@@ -8,8 +10,22 @@
             Content = content;
         }
 
-        public string Header { get; }
+        public string _header;
+
+        public string Header
+        {
+            get => _header;
+            set
+            {
+                _header = value;
+                OnPropertyChanged("Header");
+            }
+        }
 
         public object Content { get; }
+
+        public event PropertyChangedEventHandler PropertyChanged = null;
+
+        protected void OnPropertyChanged(string info) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
     }
 }

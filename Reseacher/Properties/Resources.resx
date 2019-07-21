@@ -121,4 +121,20 @@
   <data name="Aurora" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Aurora.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AURORA_DETAIL" xml:space="preserve">
+    <value>A ll-Range
+U nited
+R egional
+O n-memory
+R edeploys
+A pplication</value>
+  </data>
+  <data name="AURORA_HEAD" xml:space="preserve">
+    <value>A
+U
+R
+O
+R
+A</value>
+  </data>
 </root>

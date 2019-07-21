@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows.Forms;
 using Dragablz;
+using System.Collections.Specialized;
 
 namespace Reseacher
 {
@@ -8,15 +10,14 @@ namespace Reseacher
     {
         public MainWindowViewModel()
         {
-            InterTabClient1 = new DefaultInterTabClient();
+            InterTabClient = new DefaultInterTabClient();
         }
 
-        static MainWindowViewModel result;
+        public static MainWindowViewModel result;
 
-        public static MainWindowViewModel CreateWithSamples()
+        public static MainWindowViewModel CreateWithIntroduction()
         {
             result = new MainWindowViewModel();
-
             result.TabContents.Add(new TabContent("ようこそ", new IntroductionPage()));
 
             return result;
@@ -29,12 +30,27 @@ namespace Reseacher
             return result;
         }
 
+        public static MainWindowViewModel CreateWithDataView(string server, string schemaName, string tableName)
+        {
+            var page = new DataViewPage(server, schemaName, tableName);
+            var tabContent = new TabContent($"{server}.{schemaName}.{tableName}", page);
+            result.TabContents.Add(tabContent);
+            page.ParentTabContent = tabContent;
+
+            return result;
+        }
+
         public ObservableCollection<TabContent> TabContents { get; } = new ObservableCollection<TabContent>();
 
-        public IInterTabClient InterTabClient => InterTabClient1;
+        public static Func<object> NewItemFactory => () =>
+        {
+            var page = new DataViewPage();
+            var tabContent = new TabContent("新規ビュー", page);
+            page.ParentTabContent = tabContent;
 
-        public static Func<object> NewItemFactory => () => new TabContent("新規ビュー", new DataViewPage());
+            return tabContent;
+        };
 
-        public IInterTabClient InterTabClient1 { get; }
+        public IInterTabClient InterTabClient { get; }
     }
 }

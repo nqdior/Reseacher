@@ -107,10 +107,18 @@ namespace Reseacher.Core
 
         public void BridgeClose()
         {
-            _forward?.Stop();
-            _forward?.Dispose();
-            _client?.Disconnect();
-            _client?.Dispose();
+            try
+            {
+                _forward?.Stop();
+                _forward?.Dispose();
+                _client?.Disconnect();
+                _client?.Dispose();
+            }
+            finally
+            {
+                _forward = null;
+                _client = null;
+            }
         }
 
         private uint _connectionStringsPort

@@ -15,23 +15,10 @@ namespace Reseacher
 
         public RepeatBehavior RepeatBehavior = RepeatBehavior.Forever;
 
-        Timer timer = new Timer();
+        private Timer timer = new Timer{ Interval = 10 };
 
-        string message = @"
-A ll-Range
-U nited
-R egional
-O n-memory
-R edeploys
-A pplication";
+        private readonly string message;
 
-        string message_init = @"
-A
-U
-R
-O
-R
-A";
         int count = -1;
         int secCount = 0;
 
@@ -39,22 +26,16 @@ A";
         {
             InitializeComponent();
             
-            label_def.Content = message;
-            label_red.Content = message_init;
+            label_red.Content = Properties.Resources.AURORA_HEAD;
+            label_def.Content = Properties.Resources.AURORA_DETAIL;
+            message = Properties.Resources.AURORA_DETAIL;
             animetion.DataContext = this;
 
             Background = (ThemeService.Current.Theme == Theme.Dark) ? Brushes.Black : Brushes.White;
             var animeName = (ThemeService.Current.Theme == Theme.Dark) ? "loading_b" : "loading_w";
             SelectedImage = $@"pack://application:,,,/images/{animeName}.gif";
 
-            Task task = new Task(() =>
-            {
-                Nucleus.ReadConfig();
-            });
-            task.Start();
-
             timer.Tick += Timer_Tick;
-            timer.Interval = 30;
             timer.Start();      
         }
 
@@ -80,6 +61,8 @@ A";
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            new Task(() => Nucleus.ReadConfig()).Start();
+
             ver_label.Content = Version.Information;
             Percent();
         }
@@ -95,7 +78,6 @@ A";
                 label_per.Content = "Awaking main process ... " + await progress(i);
             }
             label_per.Content = "Stand by.";
-            Console.WriteLine("orattaaaaaa");
             Close();
         }
 
@@ -103,11 +85,6 @@ A";
         {
             await Task.Delay(20);
             return $"{percent}% ";
-        }
-
-        private void Anime_MediaEnded(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

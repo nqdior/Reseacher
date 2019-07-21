@@ -8,10 +8,10 @@
              xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
              mc:Ignorable="d">
     <dragablz:TabablzControl x:Name="dragblzControl"
-                                 ItemsSource="{Binding TabContents}"                            
-                                 HeaderMemberPath="Header"
-                                 ConsolidateOrphanedItems="True"
-                                 Margin="4, 0, 4, 4">
+                             ItemsSource="{Binding TabContents}"                            
+                             HeaderMemberPath="Header"
+                             ConsolidateOrphanedItems="True"
+                             Margin="4, 0, 4, 4">
         <dragablz:TabablzControl.InterTabController>
             <dragablz:InterTabController InterTabClient="{Binding InterTabClient}" />
         </dragablz:TabablzControl.InterTabController>

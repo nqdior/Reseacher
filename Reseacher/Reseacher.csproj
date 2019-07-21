@@ -45,8 +45,8 @@
     <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
+    <Reference Include="Dragablz">
+      <HintPath>..\Dragablz\bin\Release\Dragablz.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
@@ -69,6 +69,7 @@
     <Reference Include="MetroRadiance.Core">
       <HintPath>..\MetroRadiance\bin\Release\MetroRadiance.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.16\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
@@ -120,11 +121,11 @@
     <Compile Include="Nucleus.cs" />
     <Compile Include="Server.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
-    <Compile Include="Views\ManageArea.xaml.cs">
-      <DependentUpon>ManageArea.xaml</DependentUpon>
+    <Compile Include="Views\Page\ManagePage.xaml.cs">
+      <DependentUpon>ManagePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuArea.xaml.cs">
-      <DependentUpon>MenuArea.xaml</DependentUpon>
+    <Compile Include="Views\Control\MenuControl.xaml.cs">
+      <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Page\AddPage.xaml.cs">
       <DependentUpon>AddPage.xaml</DependentUpon>
@@ -140,11 +141,11 @@
     <Compile Include="Models\Version.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\ThemeSelectionViewModel.cs" />
-    <Page Include="Views\ManageArea.xaml">
+    <Page Include="Views\Page\ManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MenuArea.xaml">
+    <Page Include="Views\Control\MenuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,7 +161,7 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="Views\DragablzControl.xaml">
+    <Page Include="Views\Control\DragablzControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,7 +177,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\DragablzControl.xaml.cs">
+    <Compile Include="Views\Control\DragablzControl.xaml.cs">
       <DependentUpon>DragablzControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Page\IntroductionPage.xaml.cs">
@@ -188,14 +189,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ThemeMenuItem.xaml">
+    <Page Include="Views\Control\ThemeMenuItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\ThemeMenuItem.xaml.cs">
-      <DependentUpon>ThemeMenuItem.xaml</DependentUpon>
+    <Compile Include="Views\Control\ThemeMenuItemControl.xaml.cs">
+      <DependentUpon>ThemeMenuItemControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
