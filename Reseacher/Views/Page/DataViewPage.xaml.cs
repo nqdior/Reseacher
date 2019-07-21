@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Xml;
 
 namespace Reseacher
@@ -90,6 +91,7 @@ namespace Reseacher
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                loading_image.IsActive = false;
             }
         }
 

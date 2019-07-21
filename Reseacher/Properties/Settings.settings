@@ -12,7 +12,7 @@
       <Value Profile="(Default)">250</Value>
     </Setting>
     <Setting Name="Opacitys" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">0.8</Value>
     </Setting>
   </Settings>
 </SettingsFile>

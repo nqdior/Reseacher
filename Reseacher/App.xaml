@@ -26,7 +26,7 @@
             </ResourceDictionary.MergedDictionaries>
             
             <!-- [Style]DataGrid用スタイル再定義 -->
-            <!-- <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}"/>-->
+            <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}"/>
             <Style TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}"/>
             <Style TargetType="DataGrid" BasedOn="{StaticResource {x:Type DataGrid}}">
                 <Setter Property="AutoGenerateColumns" Value="False"/>

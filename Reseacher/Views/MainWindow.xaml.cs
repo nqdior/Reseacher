@@ -2,6 +2,7 @@
 using MetroRadiance.UI.Controls;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -49,7 +50,7 @@ namespace Reseacher
             // グリッドの描画
             var treeViewArea = new ColumnDefinition
             {
-                MinWidth = 30,
+                MinWidth = 5,
                 Width = new GridLength(200)
             };
             var splitterArea = new ColumnDefinition
@@ -122,9 +123,20 @@ namespace Reseacher
                 {
                     VerticalAlignment = VerticalAlignment.Center,
                     HorizontalAlignment = HorizontalAlignment.Right,
-                    Margin = new Thickness(0, 0, 0, 5)
+                    Margin = new Thickness(0, 0, 0, 5),
+                    Width = 105
                 };
                 systemButtons.SetValue(Grid.ColumnProperty, 3);
+                /*
+                 *                 <ToggleButton Width="48"
+                              Height="48"
+                              Margin="4"
+                              Style="{DynamicResource MahApps.Metro.Styles.MetroCircleToggleButtonStyle}">
+                    <iconPacks:PackIconModern Width="20"
+                                              Height="20"
+                                              Kind="City" />
+                </ToggleButton>
+                 */
                 return systemButtons;
             }
         }

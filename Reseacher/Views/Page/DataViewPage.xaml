@@ -65,11 +65,11 @@
                       Background="{DynamicResource ThemeBrushKey}" />
         <avalon:TextEditor x:Name="Editor"
                            Grid.Row="3"
-                           Background="#012456"
+                           Background="#1E1E1E"
+                           Foreground="#D4D4D4"
                            FontFamily="Consolas"
                            FontSize="12"
                            Padding="10"
-                           Foreground="White"
                            ShowLineNumbers="True"
                            KeyDown="Editor_KeyDown"/>
     </Grid>

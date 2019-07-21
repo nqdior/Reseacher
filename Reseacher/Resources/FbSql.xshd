@@ -1,12 +1,12 @@
 <SyntaxDefinition name="SQL" extensions=".sql" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
-  <Color name="Digits" foreground="#FF00008B" exampleText="3.1415f" />
-  <Color name="Comment" foreground="#FF008000" exampleText="string text = &quot;Hello, World!&quot;" />
-  <Color name="Punctuation" foreground="#FFFF0000" exampleText="string text = &quot;Hello, World!&quot;" />
-  <Color name="String" foreground="#FF808000" exampleText="string text = &quot;Hello, World!&quot;" />
-  <Color name="String2" foreground="#FF999933" exampleText="string text = &quot;Hello, World!&quot;" />
-  <Color name="Keyword" foreground="#FFF462" fontWeight="bold" exampleText="SELECT" />
+  <Color name="Digits" foreground="#B5CEA8" exampleText="3.1415f" />
+  <Color name="Comment" foreground="#6A9955" exampleText="string text = &quot;Hello, World!&quot;" />
+  <Color name="Punctuation" foreground="#9C9C9C" exampleText="string text = &quot;Hello, World!&quot;" />
+  <Color name="String" foreground="#E37272" exampleText="string text = &quot;Hello, World!&quot;" />
+  <Color name="String2" foreground="#E37272" exampleText="string text = &quot;Hello, World!&quot;" />
+  <Color name="Keyword" foreground="#3F9CCA" fontWeight="bold" exampleText="SELECT" />
   <Color name="MethodCall" foreground="#FF191970" fontWeight="bold" />
-  <Color name="ObjectReference" foreground="#FF008080" exampleText="Customer.Name" />
+  <Color name="ObjectReference" foreground="#EDC766" exampleText="Customer.Name" />
   <Color name="CommentMarkerSetTodo" foreground="#FFFF0000" fontWeight="bold" />
   <Color name="CommentMarkerSetHackUndone" foreground="#FFE0E000" fontWeight="bold" />
   <RuleSet name="CommentMarkerSet">
