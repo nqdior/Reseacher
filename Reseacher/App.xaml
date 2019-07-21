@@ -24,6 +24,17 @@
                 <!-- / MahApps Resources -->
 
             </ResourceDictionary.MergedDictionaries>
+            
+            <!-- [Style]DataGrid用スタイル再定義 -->
+            <!-- <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}"/>-->
+            <Style TargetType="DataGridCell" BasedOn="{StaticResource {x:Type DataGridCell}}"/>
+            <Style TargetType="DataGrid" BasedOn="{StaticResource {x:Type DataGrid}}">
+                <Setter Property="AutoGenerateColumns" Value="False"/>
+                <Setter Property="CanUserAddRows" Value="True"/>
+                <Setter Property="CanUserDeleteRows" Value="True"/>
+            </Style>
+            <Style TargetType="DataGridRow" BasedOn="{StaticResource {x:Type DataGridRow}}"/>
+            <Style TargetType="DataGridRowHeader" BasedOn="{StaticResource {x:Type DataGridRowHeader}}" />
 
             <!-- Dragablz Styles -->
             <!-- .\Source\Repos\Dragablz\Dragablz\Themes\MahApps.xaml を書き換えてMetroRadi仕様にできそう -->

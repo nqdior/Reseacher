@@ -69,6 +69,7 @@ namespace Reseacher
             {
                 HorizontalAlignment = HorizontalAlignment.Stretch
             };
+            splitter.SetResourceReference(BackgroundProperty, "ThemeBrushKey");
             splitter.SetValue(Grid.RowProperty, 1);
             splitter.SetValue(Grid.ColumnProperty, 1);
 
@@ -100,10 +101,10 @@ namespace Reseacher
                 TextTrimming = TextTrimming.CharacterEllipsis,
                 FontFamily = new FontFamily("Segoe UI Light"),
                 FontSize = 16,
-                Foreground = (Brush)FindResource("ForegroundBrushKey"),
                 VerticalAlignment = VerticalAlignment.Center,
                 Margin = new Thickness(5, 0, 0, 0),
             };
+            titleBlock.SetResourceReference(ForegroundProperty, "ForegroundBrushKey");
             CaptionBarArea.Children.Add(titleBlock);
 
             /* システムボタンの描画 */
