@@ -125,6 +125,9 @@
     </Compile>
     <Compile Include="Models\Nucleus.cs" />
     <Compile Include="Models\Server.cs" />
+    <Compile Include="TestWindow.xaml.cs">
+      <DependentUpon>TestWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
     <Compile Include="Views\Page\ManagePage.xaml.cs">
       <DependentUpon>ManagePage.xaml</DependentUpon>
@@ -146,6 +149,14 @@
     <Compile Include="Models\Version.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\ThemeSelectionViewModel.cs" />
+    <Page Include="Controls.ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Page\ManagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

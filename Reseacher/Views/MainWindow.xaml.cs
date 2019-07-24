@@ -26,6 +26,8 @@ namespace Reseacher
                 _initializeMainComponent();
             }
             /* http://iyemon018.hatenablog.com/entry/2016/03/04/150330 */
+
+            new TestWindow().ShowDialog();
         }
 
         private void _initializeMainComponent()
