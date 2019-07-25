@@ -6,6 +6,7 @@
              xmlns:Mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"       
              x:Class="Reseacher.DataViewPage"
+             Background="{DynamicResource ThemeBrushKey}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -45,20 +46,116 @@
                      Width="Auto"
                      Grid.Column="0"
                      FontSize="12"
+                     FontFamily="Segoe UI"
                      Controls:TextBoxHelper.Watermark="タブ名称"/>
             <ComboBox x:Name="serverComboBox"
                       ItemsSource="{Binding ServerItems, Mode=OneWay}"
                       Grid.Column="1"
                       DisplayMemberPath="Name"
+                      FontFamily="Segoe UI"
                       Controls:TextBoxHelper.UseFloatingWatermark="True"
                       Controls:TextBoxHelper.Watermark="サーバー"
                       Controls:TextBoxHelper.WatermarkAlignment="Right"/>
         </Grid>
+        
+        
         <DataGrid x:Name="dataGrid"
                   Grid.Row="1"
                   AutoGenerateColumns="True"
-                  ItemsSource="{Binding}">
-        </DataGrid>
+                  ItemsSource="{Binding}"
+                  FontSize="12"
+                  Background="Transparent"
+                  EnableColumnVirtualization="True"
+                  VirtualizingStackPanel.IsVirtualizing="True"
+                  AlternationCount="2">
+            <DataGrid.Resources>
+                
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource BorderBrushKey}" />
+                    <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource BorderBrushKey}" />
+                </Style>
+
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrushKey}" />
+                    <Setter Property="BorderThickness" Value="0,0,.99,.99" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource AccentBrushKey}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
+                            <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+                <Style TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Width" Value="25" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource AccentBrushKey}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
+                            <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="Height" Value="25" />
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                    <Style.Triggers>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}"/>
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="{DynamicResource SemiactiveBackgroundBrushKey}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Grid Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" Margin="3" />
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+                
+                <Style TargetType="{x:Type Button}" x:Key="{ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ActiveBackgroundBrushKey}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ActiveForegroundBrushKey}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource AccentBrushKey}" />
+                            <Setter Property="BorderBrush" Value="{DynamicResource ActiveBorderBrushKey}" />
+                            <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+            </DataGrid.Resources>
+        </DataGrid>        
+        
         <GridSplitter Grid.Row="2" 
                       Grid.Column="2" 
                       HorizontalAlignment="Stretch" 

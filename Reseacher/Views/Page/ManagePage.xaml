@@ -30,6 +30,7 @@
             HorizontalAlignment="Stretch"
             Margin="7"
             Name="treeView1"
+            FontFamily="Segoe UI Symbol"
             VerticalAlignment="Stretch"
             ItemTemplate="{StaticResource treeViewTemplate}"
             ItemsSource="{Binding TreeViewRoot}"

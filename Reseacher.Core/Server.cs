@@ -95,12 +95,18 @@ namespace Reseacher.Core
             _connection.Close();
         }
 
+        uint localPort = 0;
+
         public void BridgeOpen()
         {
             _client = _bridgeServer.CreateSshClient();
             _client.Connect();
 
-            _forward = new ForwardedPortLocal(_connection.DataSource, _connectionStringsPort, "127.0.0.1", _connectionStringsPort);
+            var r1 = new Random();
+            localPort = Convert.ToUInt32(r1.Next(20000, 50000));
+            _connectionStringsPort = localPort;
+
+            _forward = new ForwardedPortLocal(_connection.DataSource, _connectionStringsPort, "127.0.0.1", 3306);
             _client.AddForwardedPort(_forward);
             _forward.Start();
         }
@@ -141,6 +147,18 @@ namespace Reseacher.Core
 
                     default:
                         return 0;
+                }
+            }
+            set
+            {
+                switch (Engine)
+                {
+                    case Engine.MySQL:
+                    case Engine.MariaDB:
+                        var constr = new MySql.Data.MySqlClient.MySqlConnectionStringBuilder(ConnectionString);
+                        constr.Port = value;
+                        _connection.ConnectionString = constr.ToString();
+                        return;
                 }
             }
         }

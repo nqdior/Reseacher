@@ -51,7 +51,7 @@ namespace Reseacher
             var treeViewArea = new ColumnDefinition
             {
                 MinWidth = 5,
-                Width = new GridLength(200)
+                Width = new GridLength(300)
             };
             var splitterArea = new ColumnDefinition
             {
