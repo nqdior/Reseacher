@@ -66,6 +66,8 @@
                   FontSize="12"
                   Background="Transparent"
                   EnableColumnVirtualization="True"
+                  RowHeaderWidth="0"
+                  Padding="5, 0, 5, 0"
                   VirtualizingStackPanel.IsVirtualizing="True"
                   AlternationCount="2">
             <DataGrid.Resources>
@@ -95,6 +97,8 @@
                 </Style>
 
                 <Style TargetType="{x:Type DataGridRowHeader}">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <!--
                     <Setter Property="Width" Value="25" />
                     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                     <Style.Triggers>
@@ -109,6 +113,7 @@
                             <Setter Property="Foreground" Value="{DynamicResource AccentForegroundBrushKey}" />
                         </Trigger>
                     </Style.Triggers>
+                    -->
                 </Style>
 
                 <Style TargetType="{x:Type DataGridRow}">
