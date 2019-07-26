@@ -65,10 +65,12 @@
                   ItemsSource="{Binding}"
                   FontSize="12"
                   Background="Transparent"
-                  EnableColumnVirtualization="True"
                   RowHeaderWidth="0"
                   Padding="5, 0, 5, 0"
                   VirtualizingStackPanel.IsVirtualizing="True"
+                  VirtualizingStackPanel.VirtualizationMode="Recycling"
+                  EnableRowVirtualization="True"
+                  EnableColumnVirtualization="True"
                   AlternationCount="2">
             <DataGrid.Resources>
                 

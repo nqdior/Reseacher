@@ -339,3 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /Reseacher.Core/AuroraDemo.cs
+/Reseacher/TestWindow.xaml.cs
+/Reseacher/TestWindow.xaml
+/Reseacher/FastCanvas.cs
