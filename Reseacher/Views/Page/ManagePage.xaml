@@ -34,6 +34,7 @@
             VerticalAlignment="Stretch"
             ItemTemplate="{StaticResource treeViewTemplate}"
             ItemsSource="{Binding TreeViewRoot}"
+            PreviewKeyDown="TreeView1_PreviewKeyDown"
             PreviewMouseDoubleClick="TreeView1_MouseDoubleClick">
         </TreeView>
     </ScrollViewer>

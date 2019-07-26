@@ -12,10 +12,10 @@
              VerticalAlignment="Center"
              HorizontalAlignment="Left"
              WindowChrome.IsHitTestVisibleInChrome="True">
-    <MenuItem Header="ファイル(_F)" />
-    <MenuItem Header="新規(_N)" Name="newTab" />
-    <MenuItem Header="編集(_E)" />
-    <MenuItem Header="オプション(_O)" >
+    <MenuItem Header="ファイル(_F)" IsEnabled="False" />
+    <MenuItem Header="新規サーバ(_N)" Name="newTab" />
+    <MenuItem Header="編集(_E)" IsEnabled="False" />
+    <MenuItem Header="オプション(_O)" IsEnabled="False" >
         <MenuItem IsCheckable="True" Header="オプション1" />
         <MenuItem IsCheckable="True" Header="オプション2" />
         <MenuItem IsCheckable="True" Header="オプション3" />
@@ -25,5 +25,5 @@
             <TextBlock Text="テーマ(T)" Padding="0,0,0,1" VerticalAlignment="Center"/>
         </reseacher:AppThemeMenuItem.Header>
     </reseacher:AppThemeMenuItem>
-    <MenuItem Header="編集(_E)" />
+    <MenuItem Header="その他(_X)" IsEnabled="False" />
 </Menu>

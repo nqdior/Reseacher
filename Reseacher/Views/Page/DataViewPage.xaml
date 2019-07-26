@@ -60,6 +60,9 @@
         
         
         <DataGrid x:Name="dataGrid"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
                   Grid.Row="1"
                   AutoGenerateColumns="True"
                   ItemsSource="{Binding}"
