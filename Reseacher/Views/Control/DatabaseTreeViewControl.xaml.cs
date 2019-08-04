@@ -6,14 +6,13 @@ using System.Data;
 
 namespace Reseacher
 {
-    /// <summary>
-    /// ManagePage.xaml の相互作用ロジック
-    /// </summary>
-    public partial class ManageArea : UserControl
+
+    public partial class DatabaseTreeViewControl : ScrollViewer
     {
-        public ManageArea()
+        public DatabaseTreeViewControl()
         {
             InitializeComponent();
+            DataContext = new TreeModelView(Nucleus.ServerRack);
         }
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -74,6 +73,25 @@ namespace Reseacher
         {
             var child = (Child)treeView1.SelectedValue;
             MainWindowViewModel.CreateWithDataView(child.Server, child.Parent, child.Name);
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (treeView1.SelectedValue is Server == true)
+            {
+                var server = treeView1.SelectedValue as Server;
+                MainWindowViewModel.CreateWithEdits(server);
+            }
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (treeView1.SelectedValue is Server == true)
+            {
+                var server = treeView1.SelectedValue as Server;
+                Nucleus.ServerRack.Remove(server);
+                Nucleus.WriteConfig();
+            }
         }
     }
 }

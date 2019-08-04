@@ -126,8 +126,8 @@
     <Compile Include="Models\Nucleus.cs" />
     <Compile Include="Models\Server.cs" />
     <Compile Include="ViewModels\ComboBoxViewModel.cs" />
-    <Compile Include="Views\Page\ManagePage.xaml.cs">
-      <DependentUpon>ManagePage.xaml</DependentUpon>
+    <Compile Include="Views\Control\DatabaseTreeViewControl.xaml.cs">
+      <DependentUpon>DatabaseTreeViewControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Control\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
@@ -146,7 +146,7 @@
     <Compile Include="Models\Version.cs" />
     <Compile Include="ViewModels\LoadingViewModel.cs" />
     <Compile Include="ViewModels\ThemeSelectionViewModel.cs" />
-    <Page Include="Views\Page\ManagePage.xaml">
+    <Page Include="Views\Control\DatabaseTreeViewControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,6 +217,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Resource Include="Images\loading_b.gif" />
     <Resource Include="Images\loading_w.gif" />

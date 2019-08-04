@@ -50,9 +50,15 @@ namespace Reseacher
             {
                 label.Content = "";
             }
-            else if (count == message.Length - 1)
+            else if (count >= message.Length - 1)
             {
+                label_def.Visibility = Visibility.Hidden;
+                label_red.Visibility = Visibility.Hidden;
+                label.FontSize = 22;
                 timer.Stop();
+                timer.Interval = 300;
+                timer.Start();
+                logo_main.Visibility = Visibility.Visible;
                 return;
             }
             count += 1;

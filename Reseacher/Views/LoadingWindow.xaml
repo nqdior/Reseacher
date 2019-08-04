@@ -103,5 +103,6 @@
                Foreground="{DynamicResource AccentBrushKey}"
                FontWeight="Bold"
                Margin="110, 25, 0, 0" />
+        <Label Name="logo_main" FontFamily="Arial Black" VerticalAlignment="Bottom" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Content="Aurora" FontSize="40" FontWeight="Bold" Foreground="{DynamicResource AccentBrushKey}" Margin="0,0,0,120" Visibility="Hidden"/>
     </Grid>
 </controls:MetroWindow>

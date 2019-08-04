@@ -1,11 +1,7 @@
-﻿using MetroRadiance.UI;
-using MetroRadiance.UI.Controls;
+﻿using MetroRadiance.UI.Controls;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace Reseacher
 {
@@ -63,7 +59,7 @@ namespace Reseacher
             ContentArea.ColumnDefinitions.Add(dragblzArea);
 
             // コンテンツの描画
-            var manageArea = new ManageArea();
+            var manageArea = new DatabaseTreeViewControl();
             manageArea.SetValue(Grid.ColumnProperty, 0);
 
             var splitter = new GridSplitter
@@ -81,7 +77,6 @@ namespace Reseacher
             ContentArea.Children.Add(dragblzControl);
 
             dragblzControl.FormLoadEnded();
-            manageArea.DataContext = new TreeModelView(Nucleus.ServerRack);
 
             /* イベントのハンドル */
             menuArea.newTab.Click += (_object, _e) => dragblzControl.AddServerAddPage();
@@ -127,16 +122,6 @@ namespace Reseacher
                     Width = 105
                 };
                 systemButtons.SetValue(Grid.ColumnProperty, 3);
-                /*
-                 *                 <ToggleButton Width="48"
-                              Height="48"
-                              Margin="4"
-                              Style="{DynamicResource MahApps.Metro.Styles.MetroCircleToggleButtonStyle}">
-                    <iconPacks:PackIconModern Width="20"
-                                              Height="20"
-                                              Kind="City" />
-                </ToggleButton>
-                 */
                 return systemButtons;
             }
         }

@@ -91,7 +91,6 @@ namespace Reseacher
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                loading_image.IsActive = false;
             }
         }
 

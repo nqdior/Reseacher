@@ -30,6 +30,13 @@ namespace Reseacher
             return result;
         }
 
+        public static MainWindowViewModel CreateWithEdits(Server server)
+        {
+            result.TabContents.Add(new TabContent("サーバ追加ビュー", new AddPage(server)));
+
+            return result;
+        }
+
         public static MainWindowViewModel CreateWithDataView(string server, string schemaName, string tableName)
         {
             var page = new DataViewPage(server, schemaName, tableName);

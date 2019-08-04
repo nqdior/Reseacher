@@ -29,6 +29,35 @@ namespace Reseacher
             InitializeComponent();
         }
 
+        public AddPage(Server server)
+        {
+            InitializeComponent();
+
+            connectionName.Text = server.Name;
+            engine.Text = server.Engine.ToString();
+            switch (server.Engine)
+            {
+                case Engine.MySQL:
+                    var constr = ConnectionStringBuilderProvider.MySqlConnectionStringBuilder;
+                    constr.ConnectionString = server.ConnectionString;
+                    address.Text = constr.Server;
+                    port.Text = constr.Port.ToString();
+                    userID.Text = constr.UserID;
+                    password.Password = constr.Password;
+                    break;
+                default:
+                    throw new IndexOutOfRangeException();
+            }
+            visibleSwitch.IsChecked = server.UseBridgeServer;
+            if (server.UseBridgeServer)
+            {
+                sshAddress.Text = server.BridgeServer.Host;
+                sshPort.Text = server.BridgeServer.Port.ToString();
+                sshUserID.Text = server.BridgeServer.UserName;
+                sshPassword.Password = server.BridgeServer.Password;
+            }
+        }
+
         private void InputIntegerOnly(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -54,15 +83,18 @@ namespace Reseacher
         {
             var server = CreateServer();
 
-            try
+            if (Nucleus.ServerRack.FirstOrDefault(r => r.Name == server.Name) != null)
             {
-                Nucleus.ServerRack.Add(server);
-                Nucleus.WriteConfig();
+                var result = MessageBox.Show("うわがきOK？", "かくにん", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.Cancel)
+                {
+                    return;
+                }
+                var removeServer = Nucleus.ServerRack.FirstOrDefault(r => r.Name == server.Name);
+                Nucleus.ServerRack.Remove(removeServer);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Nucleus.ServerRack.Add(server);
+            Nucleus.WriteConfig();
         }
 
         private Server CreateServer()
